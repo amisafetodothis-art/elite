@@ -4,7 +4,7 @@
 (function (global) {
   'use strict';
   const config = Object.freeze({
-    API_BASE_URL: '', // Set to 'https://your-api.up.railway.app' for a separate backend; blank when same origin.
+    API_BASE_URL: 'https://elite-b.pxxlspace.cv', // Set to 'https://your-api.up.railway.app' for a separate backend; blank when same origin.
     MINIMUM_FUNDING_USD: 20,
     MARKET_REFRESH_MS: 30000,
     APP_NAME: 'Elite Trading'
