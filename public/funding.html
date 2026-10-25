@@ -1,19 +1,328 @@
 <!DOCTYPE html>
-
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/><meta content="#08101b" name="theme-color"/><title>Funding | Elite Trading</title><link href="https://fonts.googleapis.com" rel="preconnect"/><style>@import url(https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap);
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#08101b" name="theme-color"/>
+<title>Funding | Elite Trading</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<style>
+@import url(https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap);
 :root{--bg:#08101b;--pane:#111e2b;--pane2:#162433;--gold:#d5b77c;--ink:#f6f5ef;--mute:#91a1af;--edge:rgba(255,255,255,.115);--green:#60cea9;--red:#f18d8e}*{box-sizing:border-box}body{margin:0;background:#08101b;color:var(--ink);font-family:'DM Sans',sans-serif}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #edce90;outline-offset:3px}button:disabled{opacity:.5;cursor:not-allowed}img{max-width:100%}.shell{max-width:1440px;margin:auto;padding:0 clamp(20px,5vw,80px)}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.02em}.brand b{color:#edce90}.mark{width:35px;height:35px;background:linear-gradient(135deg,#f4dca7,#b68d50);color:#07121d;display:grid;place-items:center;clip-path:polygon(0 0,100% 0,100% 72%,70% 100%,0 100%);font-size:22px;font-weight:900}.topbar{height:88px;border-bottom:1px solid var(--edge);display:flex;align-items:center;justify-content:space-between;gap:16px}.topnav{display:flex;gap:30px;align-items:center;color:#b6c2cb;font-size:13px}.topnav a:hover{color:#efce94}.actions{display:flex;align-items:center;gap:13px}.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 23px;border:1px solid transparent;border-radius:9px;font-size:13px;font-weight:750;transition:.25s}.button:hover{transform:translateY(-2px)}.primary{background:linear-gradient(120deg,#f0d8a8,#bc9457);color:#081421}.ghost{background:rgba(255,255,255,.045);border-color:var(--edge);color:#f6f5ef}.eyebrow{color:#dfbd7f;text-transform:uppercase;letter-spacing:.21em;font-size:11px;font-weight:800}.eyebrow:before{content:'';display:inline-block;width:20px;height:1px;background:currentColor;vertical-align:middle;margin-right:10px}.muted{color:#9aabb7}.section{padding:105px 0}.section-title{font:600 clamp(35px,4.8vw,70px)/1.11 Manrope,sans-serif;letter-spacing:-.06em;margin:19px 0 20px}.lead{color:#a4b4bf;font-size:15px;line-height:1.9;max-width:540px}.card{background:linear-gradient(135deg,#122333,#0c1825);border:1px solid var(--edge);border-radius:17px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.image{object-fit:cover;width:100%;height:100%}.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s,transform .8s}.reveal.in{opacity:1;transform:none}.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid var(--edge);border-radius:50px;color:#b0bec8;font-size:11px}.badge .live-dot{width:7px;height:7px;background:#6bd5ae;border-radius:50%;box-shadow:0 0 0 4px #6bd5ae1a}.footer{border-top:1px solid var(--edge);padding:32px 0;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:#8fa0ac;font-size:12px}.footer a:hover{color:#e2c38c}.coin{width:37px;height:37px;object-fit:contain}.up{color:var(--green)!important}.down{color:var(--red)!important}.vline{height:1px;background:var(--edge)}.mobile-menu{display:none;border:1px solid var(--edge);color:white;background:transparent;padding:9px;border-radius:7px}.icon{width:18px;height:18px}.full{width:100%}@media(max-width:900px){.grid3{grid-template-columns:1fr 1fr}.topnav{display:none}.mobile-menu{display:block}.topnav.open{display:flex;position:absolute;z-index:50;top:76px;left:18px;right:18px;flex-direction:column;align-items:stretch;background:#172535;border:1px solid var(--edge);padding:20px;border-radius:12px}.topbar{height:76px}}@media(max-width:620px){.grid2,.grid3{grid-template-columns:1fr}.section{padding:70px 0}.topbar>.actions .login-link{display:none}.button{padding:13px 16px}.brand{font-size:13px}.section-title{font-size:40px}.footer{flex-direction:column}}@media(prefers-reduced-motion:reduce){*,*:after,*:before{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
- .app{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:100svh}.sidebar{border-right:1px solid var(--edge);background:#0c1723;display:flex;flex-direction:column;gap:29px;padding:28px 18px;position:sticky;top:0;height:100svh}.sidebar .brand{margin-left:8px}.side-links{display:flex;flex-direction:column;gap:6px}.side-links a{display:flex;align-items:center;gap:14px;color:#93a7b5;font-size:13px;padding:14px 15px;border-radius:9px}.side-links a.active,.side-links a:hover{color:#f4dab0;background:#1a2c3c}.side-links svg{width:18px;height:18px}.side-bottom{margin-top:auto;border-top:1px solid var(--edge);padding-top:19px}.smallnote{font-size:11px;line-height:1.65;color:#8498a7}.work{min-width:0}.workspace-top{height:82px;padding:0 38px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--edge)}.workcontent{padding:36px clamp(19px,3.1vw,46px) 80px;max-width:1600px;margin:auto}.workspace-top h1{font-size:13px;font-weight:650}.page-title{font:600 clamp(34px,3.5vw,50px)/1.15 Manrope,sans-serif;letter-spacing:-.055em;margin:12px 0}.page-sub{font-size:13px;color:#91a5b4;line-height:1.8;margin-bottom:28px}.panel{border:1px solid var(--edge);border-radius:15px;background:linear-gradient(150deg,#142333,#0d1926);padding:27px;min-width:0}.section-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:24px;flex-wrap:wrap}.section-heading h2{font-size:17px;margin:0;letter-spacing:-.03em}.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:26px 0}.metric-label{font-size:12px;color:#a6b5c0}.metric-value{font:650 clamp(25px,2.6vw,40px) Manrope,sans-serif;letter-spacing:-.045em;margin:14px 0}.metric-note{font-size:11px;color:#a0b0ba}.chart-header{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.chart-price{font:650 clamp(28px,3vw,45px) Manrope,sans-serif;letter-spacing:-.06em}.chart-label{color:#98a9b5;font-size:12px}.plot{width:100%;height:270px;display:block;overflow:visible}.legend{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:11px;color:#9badb9}.markets-table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap}.markets-table th{font-size:10px;color:#8499a7;text-transform:uppercase;letter-spacing:.11em;font-weight:650;padding:14px 6px}.markets-table td{font-size:13px;border-top:1px solid var(--edge);padding:16px 6px}.table-scroll{overflow-x:auto}.asset-name{display:flex;gap:12px;align-items:center}.asset-name .coin{width:33px;height:33px}.pills{display:flex;gap:9px;flex-wrap:wrap}.pill{border:1px solid var(--edge);border-radius:8px;background:#ffffff08;padding:9px 13px;color:#d5e0e7;font-size:11px}.pill.active{border-color:#d4b67d;color:#e5c78f;background:#d5b77c13}.balance{color:#b7c6ce;font-size:12px;line-height:1.8}.empty{border:1px dashed #476073;border-radius:12px;padding:25px;color:#99afbc;font-size:12px;line-height:1.8}.formfield{display:flex;flex-direction:column;gap:9px;margin-bottom:20px}.formfield label{font-size:12px;color:#c4d0da}.formfield input,.formfield select,.formfield textarea{width:100%;background:#081522;color:#f2f3ef;border:1px solid #314555;padding:14px 15px;border-radius:9px;outline:0}.formfield input:focus,.formfield select:focus,.formfield textarea:focus{border-color:#d4b67d}.formfield input::placeholder{color:#6f8595}.info-row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--edge);padding:17px 0;font-size:13px}.info-row:last-child{border:0}.info-row span{color:#97a9b5}.info-row strong{font-weight:600;text-align:right}.notice{padding:15px 17px;border-radius:10px;background:#d1ab6810;border:1px solid #d1ab6840;color:#c6b495;font-size:12px;line-height:1.8}.safe-status{font-size:11px;color:#98adba}.switch{appearance:none;width:40px;height:23px;border-radius:20px;background:#344655;position:relative;cursor:pointer;vertical-align:middle}.switch:before{content:'';position:absolute;width:17px;height:17px;left:3px;top:3px;border-radius:50%;background:#d6e3e9;transition:.2s}.switch:checked{background:#a88951}.switch:checked:before{transform:translateX(17px)}.workspace-mobile{display:none}.two-thirds{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr);gap:17px}@media(max-width:1080px){.sidebar{width:78px;padding:26px 10px;align-items:center}.sidebar .brand span:last-child,.side-links a span,.side-bottom{display:none}.side-links a{justify-content:center}.app{grid-template-columns:78px minmax(0,1fr)}.two-thirds{grid-template-columns:1fr}}@media(max-width:720px){.app{display:block}.sidebar{display:none}.workspace-mobile{display:flex;position:sticky;top:0;z-index:20;justify-content:space-around;gap:3px;overflow:auto;background:#101e2c;border-bottom:1px solid var(--edge);padding:9px 5px}.workspace-mobile a{font-size:10px;color:#a1b4c2;padding:8px 6px;display:flex;align-items:center;gap:5px;flex-direction:column;min-width:61px}.workspace-mobile svg{width:17px;height:17px}.workspace-top{height:70px;padding:0 20px}.metric-grid{grid-template-columns:1fr}.panel{padding:20px}.plot{height:225px}.workcontent{padding-top:27px}}</style><script defer="" src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script><style>.skeleton{display:inline-block;vertical-align:middle;min-width:76px;height:1.05em;border-radius:6px;background:linear-gradient(90deg,#263849 15%,#45586a 45%,#263849 75%);background-size:220% 100%;animation:shimmer 1.45s infinite}.skeleton.long{min-width:175px}.skeleton.chart{display:block;height:235px;width:100%;border-radius:12px}.is-loading{color:transparent!important}@keyframes shimmer{to{background-position-x:-220%}}@media(prefers-reduced-motion:reduce){.skeleton{animation:none}}.feed-source{font-size:11px;color:#899cab}.fund-choice{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;margin:25px 0}.fund-choice button{padding:24px;text-align:left;background:linear-gradient(135deg,#1b3041,#0d1d2c);border:1px solid #32495a;color:#eef3f6;border-radius:16px;min-height:128px}.fund-choice button[aria-pressed=true]{border-color:#dcbe80;box-shadow:inset 0 0 0 1px #dcbe80}.fund-choice strong{display:block;font-size:20px;margin-bottom:12px}.fund-page[hidden]{display:none!important}.fund-calc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.qrwrap{min-height:174px;display:grid;place-items:center;background:#f7f7f4;width:174px;border-radius:12px;padding:12px}.qrwrap img{max-width:150px;max-height:150px}.status-truth{color:#eac88d;font-size:12px}@media(max-width:650px){.fund-choice,.fund-calc{grid-template-columns:1fr}}</style><script src="elite-core.js"></script><style>@media(max-width:720px){html,body{max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}.work,.workcontent,.panel,.card,.grid2,.two-thirds{min-width:0;max-width:100%}.workcontent{padding-left:14px!important;padding-right:14px!important}.workspace-top{padding-left:14px!important;padding-right:14px!important}.workspace-top .badge{max-width:55%;overflow:hidden;text-overflow:ellipsis}.grid2,.two-thirds{grid-template-columns:minmax(0,1fr)!important}.info-row{flex-wrap:wrap;overflow-wrap:anywhere}.info-row strong{max-width:100%;overflow-wrap:anywhere}input,select,textarea{max-width:100%;font-size:16px!important}.table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.workspace-mobile{overflow-x:auto;justify-content:flex-start!important}.workspace-mobile a{flex:1;min-width:59px}svg.plot{max-width:100%}button,.button{max-width:100%}}@media(max-width:390px){.workspace-mobile a{font-size:9px!important;min-width:52px!important;padding:6px 2px!important}.metric-value{font-size:25px!important}.panel{padding:15px!important}}</style></head><body data-page-user="true"><div class="app"><aside class="sidebar"><a class="brand" href="/"><span class="mark">↗</span><span>ELITE <b>TRADING</b></span></a><div class="smallnote" style="margin:14px 12px 0">YOUR WORKSPACE</div><nav class="side-links"><a data-nav="/public/dashboard.html" href="/public/dashboard.html"><i data-lucide="layout-dashboard"></i><span>Overview</span></a><a data-nav="/public/markets.html" href="/public/markets.html"><i data-lucide="chart-candlestick"></i><span>Markets</span></a><a data-nav="/public/funding.html" href="/public/funding.html"><i data-lucide="wallet"></i><span>Funding</span></a><a data-nav="/public/profile.html" href="/public/profile.html"><i data-lucide="user-round"></i><span>Profile</span></a><a data-nav="/public/settings.html" href="/public/settings.html"><i data-lucide="settings-2"></i><span>Settings</span></a></nav><div class="side-bottom"><div class="smallnote">Market quotes are public data. Account balances and transactions require authenticated server integration.</div><a class="button ghost full" href="/public/login.html" style="margin-top:15px">Sign in</a></div></aside><div class="work"><nav aria-label="Workspace" class="workspace-mobile"><a href="/public/dashboard.html"><i data-lucide="layout-dashboard"></i>Overview</a><a href="/public/markets.html"><i data-lucide="chart-candlestick"></i>Markets</a><a href="/public/funding.html"><i data-lucide="wallet"></i>Funding</a><a href="/public/profile.html"><i data-lucide="user-round"></i>Profile</a><a href="/public/settings.html"><i data-lucide="settings-2"></i>Settings</a></nav><header class="workspace-top"><h1>Funding</h1><div class="badge"><span class="live-dot"></span> Public market data</div></header><main class="workcontent"><div class="eyebrow">Elite / Funding</div><h1 class="page-title">Move with intention.</h1><p class="page-sub">Fund your account with Bitcoin. Minimum funding is $20 USD. Confirm all details before transferring.</p><section class="panel fund-page" id="btcSection"><div class="eyebrow">Bitcoin · BTC network</div><h2 style="font-size:27px;margin:14px 0 8px">Calculate your BTC transfer</h2><p class="muted" style="font-size:13px">Live USD conversion based on public spot quotes. Final transfer amount depends on the actual execution rate and network conditions.</p><div class="fund-calc"><div class="formfield"><label for="depositUSD">How much would you like to fund? (USD)</label><input id="depositUSD" inputmode="decimal" max="1000000" min="20" step="0.01" type="number" value="100"/></div><div class="formfield"><label>BTC/USD spot quote</label><div class="metric-value" id="fundRate" style="font-size:24px"><span aria-label="Loading rate" class="skeleton long"></span></div><div class="smallnote" id="fundSource"></div></div></div><div class="info-row"><span>Deposit amount</span><strong id="baseUSD">$100.00</strong></div><div class="info-row"><span>Illustrative platform service charge (1%)</span><strong id="feeUSD">$1.00</strong></div><div class="info-row"><span>Estimated total to send</span><strong id="totalUSD">$101.00</strong></div><div class="info-row"><span>Estimated total BTC</span><strong id="totalBTC"><span aria-label="Loading calculation" class="skeleton"></span></strong></div><p class="smallnote">Service charge is a configurable illustration, not a confirmed company fee. Bitcoin network fees charged by your sending wallet are separate.</p><div class="vline" style="margin:22px 0"></div><h3>BTC receiving address</h3><p class="status-truth" id="walletState">Retrieving secure payment instructions…</p><div class="fund-calc" style="align-items:center"><div><div class="formfield"><label for="btcAddress">Verified platform wallet</label><input aria-label="BTC receiving address" id="btcAddress" readonly="" value="Retrieving payment details…"/></div><button class="button ghost" disabled="" id="copyWallet" type="button">Copy address</button><div class="smallnote" id="copyResult" role="status"></div></div><div class="qrwrap" id="qrBox"><span style="color:#344452;text-align:center;font-size:12px">Payment details will appear here when ready.</span></div></div><div class="notice" style="margin-top:24px">Do not pay any address until it is assigned to your account by the platform’s secure wallet service. Bitcoin transactions cannot generally be reversed.</div></section><section class="panel" style="margin-top:22px"><div class="section-heading"><h2>Funding activity</h2></div><div class="empty">Confirmed transactions will appear when connected to a secure account ledger. No funding activity is currently available.</div></section><section class="panel" style="margin-top:22px"><h2>Funding confirmation</h2><p class="page-sub">After sending BTC, submit a funding request. Its status stays Processing until reviewed. Submitting a request does not verify a blockchain transfer.</p><button class="button primary" id="submitFunding" type="button">I have sent BTC — Request review</button><p id="fundFeedback" role="status" style="margin-top:12px;color:#e6c58e"></p><h3 style="margin-top:28px">Your funding requests</h3><div class="table-scroll" id="fundHistory">Loading…</div></section></main></div></div><script>
-function icons(){if(window.lucide)lucide.createIcons()}document.addEventListener('DOMContentLoaded',()=>{icons();document.querySelectorAll('[data-menu]').forEach(el=>el.addEventListener('click',()=>document.querySelector('.topnav')?.classList.toggle('open')));const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));});document.addEventListener('DOMContentLoaded',()=>{const current=location.pathname.split('/').pop();document.querySelectorAll('[data-nav]').forEach(el=>el.classList.toggle('active',el.dataset.nav===current));});const formatUSD=v=>Number.isFinite(v)?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(v):'—';
-// Replace the empty address only with an address issued and verified by your server.
+.app{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:100svh}.sidebar{border-right:1px solid var(--edge);background:#0c1723;display:flex;flex-direction:column;gap:29px;padding:28px 18px;position:sticky;top:0;height:100svh}.sidebar .brand{margin-left:8px}.side-links{display:flex;flex-direction:column;gap:6px}.side-links a{display:flex;align-items:center;gap:14px;color:#93a7b5;font-size:13px;padding:14px 15px;border-radius:9px}.side-links a.active,.side-links a:hover{color:#f4dab0;background:#1a2c3c}.side-links svg{width:18px;height:18px}.side-bottom{margin-top:auto;border-top:1px solid var(--edge);padding-top:19px}.smallnote{font-size:11px;line-height:1.65;color:#8498a7}.work{min-width:0}.workspace-top{height:82px;padding:0 38px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--edge)}.workcontent{padding:36px clamp(19px,3.1vw,46px) 80px;max-width:1600px;margin:auto}.workspace-top h1{font-size:13px;font-weight:650}.page-title{font:600 clamp(34px,3.5vw,50px)/1.15 Manrope,sans-serif;letter-spacing:-.055em;margin:12px 0}.page-sub{font-size:13px;color:#91a5b4;line-height:1.8;margin-bottom:28px}.panel{border:1px solid var(--edge);border-radius:15px;background:linear-gradient(150deg,#142333,#0d1926);padding:27px;min-width:0}.section-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:24px;flex-wrap:wrap}.section-heading h2{font-size:17px;margin:0;letter-spacing:-.03em}.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:26px 0}.metric-label{font-size:12px;color:#a6b5c0}.metric-value{font:650 clamp(25px,2.6vw,40px) Manrope,sans-serif;letter-spacing:-.045em;margin:14px 0}.metric-note{font-size:11px;color:#a0b0ba}.chart-header{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.chart-price{font:650 clamp(28px,3vw,45px) Manrope,sans-serif;letter-spacing:-.06em}.chart-label{color:#98a9b5;font-size:12px}.plot{width:100%;height:270px;display:block;overflow:visible}.legend{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:11px;color:#9badb9}.markets-table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap}.markets-table th{font-size:10px;color:#8499a7;text-transform:uppercase;letter-spacing:.11em;font-weight:650;padding:14px 6px}.markets-table td{font-size:13px;border-top:1px solid var(--edge);padding:16px 6px}.table-scroll{overflow-x:auto}.asset-name{display:flex;gap:12px;align-items:center}.asset-name .coin{width:33px;height:33px}.pills{display:flex;gap:9px;flex-wrap:wrap}.pill{border:1px solid var(--edge);border-radius:8px;background:#ffffff08;padding:9px 13px;color:#d5e0e7;font-size:11px}.pill.active{border-color:#d4b67d;color:#e5c78f;background:#d5b77c13}.balance{color:#b7c6ce;font-size:12px;line-height:1.8}.empty{border:1px dashed #476073;border-radius:12px;padding:25px;color:#99afbc;font-size:12px;line-height:1.8}.formfield{display:flex;flex-direction:column;gap:9px;margin-bottom:20px}.formfield label{font-size:12px;color:#c4d0da}.formfield input,.formfield select,.formfield textarea{width:100%;background:#081522;color:#f2f3ef;border:1px solid #314555;padding:14px 15px;border-radius:9px;outline:0}.formfield input:focus,.formfield select:focus,.formfield textarea:focus{border-color:#d4b67d}.formfield input::placeholder{color:#6f8595}.info-row{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--edge);padding:17px 0;font-size:13px}.info-row:last-child{border:0}.info-row span{color:#97a9b5}.info-row strong{font-weight:600;text-align:right}.notice{padding:15px 17px;border-radius:10px;background:#d1ab6810;border:1px solid #d1ab6840;color:#c6b495;font-size:12px;line-height:1.8}.safe-status{font-size:11px;color:#98adba}.switch{appearance:none;width:40px;height:23px;border-radius:20px;background:#344655;position:relative;cursor:pointer;vertical-align:middle}.switch:before{content:'';position:absolute;width:17px;height:17px;left:3px;top:3px;border-radius:50%;background:#d6e3e9;transition:.2s}.switch:checked{background:#a88951}.switch:checked:before{transform:translateX(17px)}.workspace-mobile{display:none}.two-thirds{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr);gap:17px}@media(max-width:1080px){.sidebar{width:78px;padding:26px 10px;align-items:center}.sidebar .brand span:last-child,.side-links a span,.side-bottom{display:none}.side-links a{justify-content:center}.app{grid-template-columns:78px minmax(0,1fr)}.two-thirds{grid-template-columns:1fr}}@media(max-width:720px){.app{display:block}.sidebar{display:none}.workspace-mobile{display:flex;position:sticky;top:0;z-index:20;justify-content:space-around;gap:3px;overflow:auto;background:#101e2c;border-bottom:1px solid var(--edge);padding:9px 5px}.workspace-mobile a{font-size:10px;color:#a1b4c2;padding:8px 6px;display:flex;align-items:center;gap:5px;flex-direction:column;min-width:61px}.workspace-mobile svg{width:17px;height:17px}.workspace-top{height:70px;padding:0 20px}.metric-grid{grid-template-columns:1fr}.panel{padding:20px}.plot{height:225px}.workcontent{padding-top:27px}}
+</style>
+<script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<style>
+.skeleton{display:inline-block;vertical-align:middle;min-width:76px;height:1.05em;border-radius:6px;background:linear-gradient(90deg,#263849 15%,#45586a 45%,#263849 75%);background-size:220% 100%;animation:shimmer 1.45s infinite}
+.skeleton.long{min-width:175px}
+.skeleton.chart{display:block;height:235px;width:100%;border-radius:12px}
+.skeleton.qr{width:150px;height:150px;border-radius:10px;display:block}
+.is-loading{color:transparent!important}
+@keyframes shimmer{to{background-position-x:-220%}}
+@media(prefers-reduced-motion:reduce){.skeleton{animation:none}}
+.feed-source{font-size:11px;color:#899cab}
+.fund-choice{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;margin:25px 0}
+.fund-choice button{padding:24px;text-align:left;background:linear-gradient(135deg,#1b3041,#0d1d2c);border:1px solid #32495a;color:#eef3f6;border-radius:16px;min-height:128px}
+.fund-choice button[aria-pressed=true]{border-color:#dcbe80;box-shadow:inset 0 0 0 1px #dcbe80}
+.fund-choice strong{display:block;font-size:20px;margin-bottom:12px}
+.fund-page[hidden]{display:none!important}
+.fund-calc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.qrwrap{min-height:174px;display:grid;place-items:center;background:#0d1a26;width:174px;border-radius:12px;padding:12px;border:1px solid #263849}
+.qrwrap img{max-width:150px;max-height:150px}
+.status-truth{color:#eac88d;font-size:12px}
+.qr-status{color:#8fa2b1;font-size:11px;text-align:center;padding:0 6px}
+@media(max-width:650px){.fund-choice,.fund-calc{grid-template-columns:1fr}}
+</style>
+<script src="elite-core.js"></script>
+<style>
+@media(max-width:720px){
+  html,body{max-width:100%;overflow-x:hidden}
+  *,*::before,*::after{box-sizing:border-box}
+  .work,.workcontent,.panel,.card,.grid2,.two-thirds{min-width:0;max-width:100%}
+  .workcontent{padding-left:14px!important;padding-right:14px!important}
+  .workspace-top{padding-left:14px!important;padding-right:14px!important}
+  .workspace-top .badge{max-width:55%;overflow:hidden;text-overflow:ellipsis}
+  .grid2,.two-thirds{grid-template-columns:minmax(0,1fr)!important}
+  .info-row{flex-wrap:wrap;overflow-wrap:anywhere}
+  .info-row strong{max-width:100%;overflow-wrap:anywhere}
+  input,select,textarea{max-width:100%;font-size:16px!important}
+  .table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .workspace-mobile{overflow-x:auto;justify-content:flex-start!important}
+  .workspace-mobile a{flex:1;min-width:59px}
+  svg.plot{max-width:100%}
+  button,.button{max-width:100%}
+}
+@media(max-width:390px){
+  .workspace-mobile a{font-size:9px!important;min-width:52px!important;padding:6px 2px!important}
+  .metric-value{font-size:25px!important}
+  .panel{padding:15px!important}
+}
+</style>
+</head>
+<body data-page-user="true">
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="/"><span class="mark">↗</span><span>ELITE <b>TRADING</b></span></a>
+    <div class="smallnote" style="margin:14px 12px 0">YOUR WORKSPACE</div>
+    <nav class="side-links">
+      <a data-nav="/public/dashboard.html" href="/public/dashboard.html"><i data-lucide="layout-dashboard"></i><span>Overview</span></a>
+      <a data-nav="/public/markets.html" href="/public/markets.html"><i data-lucide="chart-candlestick"></i><span>Markets</span></a>
+      <a data-nav="/public/funding.html" href="/public/funding.html"><i data-lucide="wallet"></i><span>Funding</span></a>
+      <a data-nav="/public/profile.html" href="/public/profile.html"><i data-lucide="user-round"></i><span>Profile</span></a>
+      <a data-nav="/public/settings.html" href="/public/settings.html"><i data-lucide="settings-2"></i><span>Settings</span></a>
+    </nav>
+    <div class="side-bottom">
+      <div class="smallnote">Market quotes are public data. Account balances and transactions require authenticated server integration.</div>
+      <a class="button ghost full" href="/public/login.html" style="margin-top:15px">Sign in</a>
+    </div>
+  </aside>
+  <div class="work">
+    <nav aria-label="Workspace" class="workspace-mobile">
+      <a href="/public/dashboard.html"><i data-lucide="layout-dashboard"></i>Overview</a>
+      <a href="/public/markets.html"><i data-lucide="chart-candlestick"></i>Markets</a>
+      <a href="/public/funding.html"><i data-lucide="wallet"></i>Funding</a>
+      <a href="/public/profile.html"><i data-lucide="user-round"></i>Profile</a>
+      <a href="/public/settings.html"><i data-lucide="settings-2"></i>Settings</a>
+    </nav>
+    <header class="workspace-top">
+      <h1>Funding</h1>
+      <div class="badge"><span class="live-dot"></span> Public market data</div>
+    </header>
+    <main class="workcontent">
+      <div class="eyebrow">Elite / Funding</div>
+      <h1 class="page-title">Move with intention.</h1>
+      <p class="page-sub">Fund your account with Bitcoin. Minimum funding is $20 USD. Confirm all details before transferring.</p>
+
+      <section class="panel fund-page" id="btcSection">
+        <div class="eyebrow">Bitcoin · BTC network</div>
+        <h2 style="font-size:27px;margin:14px 0 8px">Calculate your BTC transfer</h2>
+        <p class="muted" style="font-size:13px">Live USD conversion based on public spot quotes. Final transfer amount depends on the actual execution rate and network conditions.</p>
+
+        <div class="fund-calc">
+          <div class="formfield">
+            <label for="depositUSD">How much would you like to fund? (USD)</label>
+            <input id="depositUSD" inputmode="decimal" max="1000000" min="20" step="0.01" type="number" value="100"/>
+          </div>
+          <div class="formfield">
+            <label>BTC/USD spot quote</label>
+            <div class="metric-value" id="fundRate" style="font-size:24px"><span class="skeleton long" aria-label="Loading rate"></span></div>
+            <div class="smallnote" id="fundSource"></div>
+          </div>
+        </div>
+
+        <div class="info-row"><span>Deposit amount</span><strong id="baseUSD">$100.00</strong></div>
+        <div class="info-row"><span>Illustrative platform service charge (1%)</span><strong id="feeUSD">$1.00</strong></div>
+        <div class="info-row"><span>Estimated total to send</span><strong id="totalUSD">$101.00</strong></div>
+        <div class="info-row"><span>Estimated total BTC</span><strong id="totalBTC"><span class="skeleton" aria-label="Loading calculation"></span></strong></div>
+        <p class="smallnote">Service charge is a configurable illustration, not a confirmed company fee. Bitcoin network fees charged by your sending wallet are separate.</p>
+
+        <div class="vline" style="margin:22px 0"></div>
+        <h3>BTC receiving address</h3>
+        <p class="status-truth" id="walletState">Retrieving secure payment instructions…</p>
+
+        <div class="fund-calc" style="align-items:center">
+          <div>
+            <div class="formfield">
+              <label for="btcAddress">Verified platform wallet</label>
+              <input aria-label="BTC receiving address" id="btcAddress" readonly value="Retrieving payment details…"/>
+            </div>
+            <button class="button ghost" disabled id="copyWallet" type="button">Copy address</button>
+            <div class="smallnote" id="copyResult" role="status"></div>
+          </div>
+          <div class="qrwrap" id="qrBox">
+            <div style="text-align:center">
+              <span class="skeleton qr" aria-label="Loading QR code"></span>
+              <div class="qr-status">Waiting for payment instructions…</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="notice" style="margin-top:24px">Do not pay any address until it is assigned to your account by the platform’s secure wallet service. Bitcoin transactions cannot generally be reversed.</div>
+      </section>
+
+      <section class="panel" style="margin-top:22px">
+        <div class="section-heading"><h2>Funding activity</h2></div>
+        <div class="empty">Confirmed transactions will appear when connected to a secure account ledger. No funding activity is currently available.</div>
+      </section>
+
+      <section class="panel" style="margin-top:22px">
+        <h2>Funding confirmation</h2>
+        <p class="page-sub">After sending BTC, submit a funding request. Its status stays Processing until reviewed. Submitting a request does not verify a blockchain transfer.</p>
+        <button class="button primary" id="submitFunding" type="button">I have sent BTC — Request review</button>
+        <p id="fundFeedback" role="status" style="margin-top:12px;color:#e6c58e"></p>
+        <h3 style="margin-top:28px">Your funding requests</h3>
+        <div class="table-scroll" id="fundHistory">Loading…</div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+function icons(){if(window.lucide)lucide.createIcons()}
+document.addEventListener('DOMContentLoaded',()=>{
+  icons();
+  document.querySelectorAll('[data-menu]').forEach(el=>el.addEventListener('click',()=>document.querySelector('.topnav')?.classList.toggle('open')));
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}}),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  const current=location.pathname.split('/').pop();
+  document.querySelectorAll('[data-nav]').forEach(el=>el.classList.toggle('active',el.dataset.nav===current));
+});
+
 const fmt=v=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(v);
-let rate=null,address=null,fee=.01;const amount=document.getElementById('depositUSD');amount.min=20;amount.value=100;
-function calculate(){const usd=Number(amount.value),valid=usd>=20&&usd<=1000000;document.getElementById('baseUSD').textContent=valid?fmt(usd):'Minimum $20';document.getElementById('feeUSD').textContent=valid?fmt(usd*fee):'—';document.getElementById('totalUSD').textContent=valid?fmt(usd*(1+fee)):'—';document.getElementById('totalBTC').textContent=valid&&rate?(usd*(1+fee)/rate).toFixed(8)+' BTC':'—';document.getElementById('copyWallet').disabled=!valid||!address;}
-async function fetchFunding(){try{const r=await Elite.apiFetch('/api/funding/config');if(!r.ok)throw Error('Payment configuration unavailable');const d=await r.json();address=d.btcAddress||null;fee=d.feePercent/100;document.getElementById('walletState').textContent=address?'BTC network · Confirm destination before sending':'Secure payment instructions are being prepared. Please check again shortly.';document.getElementById('btcAddress').value=address||'Payment details are being prepared';const box=document.getElementById('qrBox');box.replaceChildren();if(address){const img=document.createElement('img');img.alt='Bitcoin address QR code';img.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data='+encodeURIComponent('bitcoin:'+address);box.append(img)}else box.textContent='Payment details are being prepared';calculate()}catch{document.getElementById('walletState').textContent='Payment instructions are temporarily unavailable. Please try again.'}}
-async function price(){try{const r=await Elite.apiFetch('/api/market');if(!r.ok)throw Error();const d=await r.json();rate=d.btcUSD;document.getElementById('fundRate').textContent=fmt(rate);document.getElementById('fundSource').textContent=d.source+' · '+new Date(d.asOf).toLocaleTimeString();calculate()}catch{document.getElementById('fundRate').textContent='—';document.getElementById('fundSource').textContent='Live quote temporarily unavailable';}}
-amount.addEventListener('input',calculate);document.getElementById('copyWallet').addEventListener('click',async()=>{if(!address)return;try{await navigator.clipboard.writeText(address);document.getElementById('copyResult').textContent='Address copied'}catch{document.getElementById('copyResult').textContent='Unable to copy automatically'}});calculate();price();fetchFunding();setInterval(price,30000);setInterval(fetchFunding,45000);
+let rate=null,address=null,fee=.01;
 
-</script><script>
-(async()=>{try{const r=await Elite.apiFetch('/api/me',{});if(r.status===401){Elite.clearSession();location.replace('/public/login.html');return}if(!r.ok)throw Error('Account temporarily unavailable');const user=await r.json();if(document.body.dataset.requireAdmin&&user.role!=='admin'){location.replace('/public/dashboard.html');return}if(document.body.dataset.pageUser){document.querySelectorAll('[data-account-name]').forEach(n=>n.textContent=user.fullName);document.querySelectorAll('[data-account-email]').forEach(n=>n.textContent=user.email);document.querySelectorAll('[data-account-balance]').forEach(n=>n.textContent='$'+user.balanceUSD.toFixed(2))}}catch(e){if(e?.status===401||!sessionStorage.getItem('elite:token')){Elite.clearSession();location.replace('/public/login.html')}else{console.error('Profile unavailable:',e)}}})();
-window.eliteLogout=async()=>{await Elite.apiFetch('/api/auth/logout',{method:'POST'}).catch(()=>{});Elite.clearSession();location.href='/public/login.html'};
+const amount=document.getElementById('depositUSD');
+amount.min=20;amount.value=100;
 
-</script><script>async function refreshFunding(){try{const {requests}=await Elite.apiJSON('/api/funding/requests');const el=document.getElementById('fundHistory');el.replaceChildren();if(!requests.length){el.textContent='No funding requests yet.';return}const table=document.createElement('table');table.className='markets-table';table.innerHTML='<thead><tr><th>Request</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>';const body=document.createElement('tbody');for(const q of requests){const tr=document.createElement('tr');for(const v of ['#'+q.id,'$'+(q.amount_usd_cents/100).toFixed(2),q.status==='credited'?'Credited':q.status==='rejected'?'Rejected':'Processing',new Date(q.created_at).toLocaleString()]){const td=document.createElement('td');td.textContent=v;tr.append(td)}body.append(tr)}table.append(body);el.append(table)}catch(e){document.getElementById('fundHistory').textContent=e.message}}document.getElementById('submitFunding').addEventListener('click',async()=>{const btn=document.getElementById('submitFunding'),msg=document.getElementById('fundFeedback');try{const amountUSD=Number(document.getElementById('depositUSD').value);const market=await Elite.apiJSON('/api/market');if(!(amountUSD>=20))throw Error('Minimum funding is $20.');const estimatedBTC=Number(((amountUSD*1.01)/market.btcUSD).toFixed(8));if(!(estimatedBTC>0))throw Error('Live price temporarily unavailable.');btn.disabled=true;await Elite.post('/api/funding/requests',{amountUSD,estimatedBTC});msg.textContent='Funding request submitted. Status: Processing — awaiting review.';await refreshFunding()}catch(e){msg.textContent=e.message}finally{btn.disabled=false}});refreshFunding();</script></body></html>
+function calculate(){
+  const usd=Number(amount.value),valid=usd>=20&&usd<=1000000;
+  document.getElementById('baseUSD').textContent=valid?fmt(usd):'Minimum $20';
+  document.getElementById('feeUSD').textContent=valid?fmt(usd*fee):'—';
+  document.getElementById('totalUSD').textContent=valid?fmt(usd*(1+fee)):'—';
+  document.getElementById('totalBTC').textContent=valid&&rate?(usd*(1+fee)/rate).toFixed(8)+' BTC':'—';
+  document.getElementById('copyWallet').disabled=!valid||!address;
+}
+
+function renderQr(){
+  const box=document.getElementById('qrBox');
+  box.replaceChildren();
+  if(address){
+    const img=document.createElement('img');
+    img.alt='Bitcoin address QR code';
+    img.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data='+encodeURIComponent('bitcoin:'+address);
+    box.append(img);
+  }else{
+    const wrap=document.createElement('div');
+    wrap.style.textAlign='center';
+    const sk=document.createElement('span');
+    sk.className='skeleton qr';
+    sk.setAttribute('aria-label','Loading QR code');
+    const note=document.createElement('div');
+    note.className='qr-status';
+    note.textContent='Waiting for payment instructions…';
+    wrap.append(sk,note);
+    box.append(wrap);
+  }
+}
+
+async function fetchFunding(){
+  try{
+    const r=await Elite.apiFetch('/api/funding/config');
+    if(!r.ok)throw Error('Payment configuration unavailable');
+    const d=await r.json();
+    const prev=address;
+    address=d.btcAddress||null;
+    fee=d.feePercent/100;
+    document.getElementById('walletState').textContent=address?'BTC network · Confirm destination before sending':'Secure payment instructions are being prepared. Please check again shortly.';
+    document.getElementById('btcAddress').value=address||'Payment details are being prepared';
+    if(address!==prev)renderQr();
+    calculate();
+  }catch{
+    document.getElementById('walletState').textContent='Payment instructions are temporarily unavailable. Please try again.';
+  }
+}
+
+async function price(){
+  try{
+    const r=await Elite.apiFetch('/api/market');
+    if(!r.ok)throw Error();
+    const d=await r.json();
+    rate=d.btcUSD;
+    document.getElementById('fundRate').textContent=fmt(rate);
+    document.getElementById('fundSource').textContent=d.source+' · '+new Date(d.asOf).toLocaleTimeString();
+    calculate();
+  }catch{
+    document.getElementById('fundRate').textContent='—';
+    document.getElementById('fundSource').textContent='Live quote temporarily unavailable';
+  }
+}
+
+amount.addEventListener('input',calculate);
+
+document.getElementById('copyWallet').addEventListener('click',async()=>{
+  if(!address)return;
+  try{
+    await navigator.clipboard.writeText(address);
+    document.getElementById('copyResult').textContent='Address copied';
+  }catch{
+    document.getElementById('copyResult').textContent='Unable to copy automatically';
+  }
+});
+
+renderQr();
+calculate();
+price();
+fetchFunding();
+setInterval(price,30000);
+setInterval(fetchFunding,20000);
+</script>
+
+<script>
+(async()=>{
+  try{
+    const r=await Elite.apiFetch('/api/me',{});
+    if(r.status===401){Elite.clearSession();location.replace('/public/login.html');return}
+    if(!r.ok)throw Error('Account temporarily unavailable');
+    const user=await r.json();
+    if(document.body.dataset.requireAdmin&&user.role!=='admin'){location.replace('/public/dashboard.html');return}
+    if(document.body.dataset.pageUser){
+      document.querySelectorAll('[data-account-name]').forEach(n=>n.textContent=user.fullName);
+      document.querySelectorAll('[data-account-email]').forEach(n=>n.textContent=user.email);
+      document.querySelectorAll('[data-account-balance]').forEach(n=>n.textContent='$'+user.balanceUSD.toFixed(2));
+    }
+  }catch(e){
+    if(e?.status===401||!sessionStorage.getItem('elite:token')){
+      Elite.clearSession();
+      location.replace('/public/login.html');
+    }else{
+      console.error('Profile unavailable:',e);
+    }
+  }
+})();
+window.eliteLogout=async()=>{
+  await Elite.apiFetch('/api/auth/logout',{method:'POST'}).catch(()=>{});
+  Elite.clearSession();
+  location.href='/public/login.html';
+};
+</script>
+
+<script>
+async function refreshFunding(){
+  try{
+    const {requests}=await Elite.apiJSON('/api/funding/requests');
+    const el=document.getElementById('fundHistory');
+    el.replaceChildren();
+    if(!requests.length){el.textContent='No funding requests yet.';return}
+    const table=document.createElement('table');
+    table.className='markets-table';
+    table.innerHTML='<thead><tr><th>Request</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>';
+    const body=document.createElement('tbody');
+    for(const q of requests){
+      const tr=document.createElement('tr');
+      for(const v of ['#'+q.id,'$'+(q.amount_usd_cents/100).toFixed(2),q.status==='credited'?'Credited':q.status==='rejected'?'Rejected':'Processing',new Date(q.created_at).toLocaleString()]){
+        const td=document.createElement('td');td.textContent=v;tr.append(td);
+      }
+      body.append(tr);
+    }
+    table.append(body);el.append(table);
+  }catch(e){document.getElementById('fundHistory').textContent=e.message}
+}
+document.getElementById('submitFunding').addEventListener('click',async()=>{
+  const btn=document.getElementById('submitFunding'),msg=document.getElementById('fundFeedback');
+  try{
+    const amountUSD=Number(document.getElementById('depositUSD').value);
+    const market=await Elite.apiJSON('/api/market');
+    if(!(amountUSD>=20))throw Error('Minimum funding is $20.');
+    const estimatedBTC=Number(((amountUSD*1.01)/market.btcUSD).toFixed(8));
+    if(!(estimatedBTC>0))throw Error('Live price temporarily unavailable.');
+    btn.disabled=true;
+    await Elite.post('/api/funding/requests',{amountUSD,estimatedBTC});
+    msg.textContent='Funding request submitted. Status: Processing — awaiting review.';
+    await refreshFunding();
+  }catch(e){msg.textContent=e.message}
+  finally{btn.disabled=false}
+});
+refreshFunding();
+</script>
+</body>
+</html>
