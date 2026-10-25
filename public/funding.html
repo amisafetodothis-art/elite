@@ -141,28 +141,6 @@
       </section>
 
       <section class="panel" style="margin-top:22px">
-  <h2>Withdraw funds</h2>
-  <p class="page-sub">Request a BTC withdrawal. A 1% service fee applies. Funds are held pending admin review — if rejected, they return to your balance.</p>
-  <div class="fund-calc">
-    <div class="formfield">
-      <label for="wdAmount">Amount (USD)</label>
-      <input id="wdAmount" type="number" min="20" step="0.01" placeholder="100.00"/>
-    </div>
-    <div class="formfield">
-      <label for="wdAddress">Your BTC address</label>
-      <input id="wdAddress" maxlength="200" placeholder="bc1… or 1… or 3…"/>
-    </div>
-  </div>
-  <div class="info-row"><span>Available balance</span><strong id="wdBalance">—</strong></div>
-  <div class="info-row"><span>Service fee (1%)</span><strong id="wdFee">$0.00</strong></div>
-  <div class="info-row"><span>Total to be held</span><strong id="wdTotal">$0.00</strong></div>
-  <button class="button primary" id="wdSubmit" type="button" style="margin-top:12px">Request withdrawal</button>
-  <p id="wdFeedback" role="status" class="smallnote" style="margin-top:10px"></p>
-  <h3 style="margin-top:24px">Your withdrawal requests</h3>
-  <div class="table-scroll" id="wdHistory">Loading…</div>
-      </section>
-
-      <section class="panel" style="margin-top:22px">
         <div class="section-heading"><h2>Funding activity</h2></div>
         <div class="empty">Confirmed transactions will appear when connected to a secure account ledger. No funding activity is currently available.</div>
       </section>
@@ -174,6 +152,28 @@
         <p id="fundFeedback" role="status" style="margin-top:12px;color:#e6c58e"></p>
         <h3 style="margin-top:28px">Your funding requests</h3>
         <div class="table-scroll" id="fundHistory">Loading…</div>
+      </section>
+
+      <section class="panel" style="margin-top:22px">
+        <h2>Withdraw funds</h2>
+        <p class="page-sub">Request a BTC withdrawal. A 1% service fee applies. Funds are held pending admin review — if rejected, they return to your balance.</p>
+        <div class="fund-calc">
+          <div class="formfield">
+            <label for="wdAmount">Amount (USD)</label>
+            <input id="wdAmount" type="number" min="20" step="0.01" placeholder="100.00"/>
+          </div>
+          <div class="formfield">
+            <label for="wdAddress">Your BTC address</label>
+            <input id="wdAddress" maxlength="200" placeholder="bc1… or 1… or 3…"/>
+          </div>
+        </div>
+        <div class="info-row"><span>Available balance</span><strong id="wdBalance">—</strong></div>
+        <div class="info-row"><span>Service fee (1%)</span><strong id="wdFee">$0.00</strong></div>
+        <div class="info-row"><span>Total to be held</span><strong id="wdTotal">$0.00</strong></div>
+        <button class="button primary" id="wdSubmit" type="button" style="margin-top:12px">Request withdrawal</button>
+        <p id="wdFeedback" role="status" class="smallnote" style="margin-top:10px"></p>
+        <h3 style="margin-top:24px">Your withdrawal requests</h3>
+        <div class="table-scroll" id="wdHistory">Loading…</div>
       </section>
     </main>
   </div>
@@ -345,6 +345,57 @@ document.getElementById('submitFunding').addEventListener('click',async()=>{
   finally{btn.disabled=false}
 });
 refreshFunding();
+</script>
+
+<script>
+let wdBalance=0;
+async function refreshWdBalance(){
+  try{const r=await Elite.apiFetch('/api/me',{});if(!r.ok)return;const u=await r.json();wdBalance=Number(u.balanceUSD||0);document.getElementById('wdBalance').textContent='$'+wdBalance.toFixed(2)}catch(e){}
+}
+function wdFee(){
+  const a=Number(document.getElementById('wdAmount').value)||0;
+  document.getElementById('wdFee').textContent='$'+(a*0.01).toFixed(2);
+  document.getElementById('wdTotal').textContent='$'+(a*1.01).toFixed(2);
+}
+document.getElementById('wdAmount').addEventListener('input',wdFee);
+async function refreshWdHistory(){
+  try{
+    const {requests}=await Elite.apiJSON('/api/withdrawal/requests');
+    const el=document.getElementById('wdHistory');el.replaceChildren();
+    if(!requests.length){el.textContent='No withdrawal requests yet.';return}
+    const t=document.createElement('table');t.className='markets-table';
+    t.innerHTML='<thead><tr><th>#</th><th>Amount</th><th>Status</th><th>Reason</th><th>Date</th></tr></thead>';
+    const b=document.createElement('tbody');
+    for(const q of requests){
+      const tr=document.createElement('tr');
+      for(const v of ['#'+q.id,'$'+(q.amount_usd_cents/100).toFixed(2),q.status==='approved'?'Approved':q.status==='rejected'?'Rejected':'Pending',q.reason||'—',new Date(q.created_at).toLocaleString()]){
+        const td=document.createElement('td');td.textContent=v;tr.append(td);
+      }
+      b.append(tr);
+    }
+    t.append(b);el.append(t);
+  }catch(e){document.getElementById('wdHistory').textContent=e.message}
+}
+document.getElementById('wdSubmit').addEventListener('click',async()=>{
+  const btn=document.getElementById('wdSubmit'),msg=document.getElementById('wdFeedback');
+  try{
+    const amountUSD=Number(document.getElementById('wdAmount').value);
+    const btcAddress=document.getElementById('wdAddress').value.trim();
+    if(!(amountUSD>=20))throw Error('Minimum withdrawal is $20.');
+    if(!btcAddress)throw Error('Enter your BTC address.');
+    btn.disabled=true;
+    const r=await Elite.apiJSON('/api/withdrawal/requests',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({amountUSD,btcAddress})});
+    msg.textContent='Withdrawal requested. Funds held pending admin approval.';
+    document.getElementById('wdAmount').value='';document.getElementById('wdAddress').value='';wdFee();
+    wdBalance=Number(r.newBalanceUSD||wdBalance);
+    document.getElementById('wdBalance').textContent='$'+wdBalance.toFixed(2);
+    await refreshWdHistory();
+  }catch(e){msg.textContent=e.message}
+  finally{btn.disabled=false}
+});
+refreshWdBalance();wdFee();refreshWdHistory();
+setInterval(refreshWdBalance,15000);
+setInterval(refreshWdHistory,15000);
 </script>
 </body>
 </html>
