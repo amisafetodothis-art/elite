@@ -13,14 +13,12 @@ body{margin:0;background:#08101b;color:#f6f5ef;font:14px Manrope,sans-serif}
 button,input,select{font:inherit}
 button{cursor:pointer}
 a{color:inherit;text-decoration:none}
-
 .layout{min-height:100vh;display:grid;grid-template-columns:245px minmax(0,1fr)}
 aside{background:#0d1926;border-right:1px solid #263649;padding:30px 22px;display:flex;flex-direction:column;gap:6px}
 aside a{display:block;color:#acb9c5;padding:14px 15px;border-radius:10px;font-size:13px}
 aside a.active,aside a:hover{background:#1c3041;color:#ecd5a9}
 .logo{font-size:21px;font-weight:800;margin-bottom:34px;letter-spacing:-.02em}
 .logo span{color:#d5b77c}
-
 main{padding:36px clamp(18px,4vw,60px) 80px;max-width:1500px;width:100%;margin:0 auto}
 header{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;flex-wrap:wrap;border-bottom:1px solid #2a3945;padding-bottom:26px}
 h1{font-size:clamp(26px,3vw,42px);letter-spacing:-.05em;margin:8px 0 6px}
@@ -29,45 +27,34 @@ h3{font-size:14px;letter-spacing:-.02em;margin:20px 0 10px}
 .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#e1bb7b;font-weight:700}
 .muted{color:#95a9b7;line-height:1.7;font-size:13px}
 .smallnote{font-size:12px;color:#8ea2b1;line-height:1.6}
-
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:26px 0}
 .card{padding:22px;border:1px solid #2a4050;border-radius:16px;background:linear-gradient(140deg,#14283a,#0d1b28);min-width:0}
 .stat{font-size:26px;font-weight:800;margin:10px 0 0;letter-spacing:-.02em;overflow-wrap:anywhere}
-
 .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
-
 .control{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 input{color:#fff;background:#091521;border:1px solid #43586a;border-radius:8px;padding:13px 14px;width:100%;min-width:0;font-size:14px}
 input:focus{outline:2px solid #e3bd7e;outline-offset:1px}
 label.field{display:grid;gap:7px;font-size:12px;color:#b8c5d0;min-width:0}
 label.field > span{color:#b8c5d0}
-
 button{border-radius:9px;padding:12px 18px;border:1px solid #455765;background:#203343;color:#fff;font-weight:600;font-size:13px;transition:.2s}
 button.primary{color:#0b1723;background:linear-gradient(115deg,#f3dbaa,#b99459);border:0;font-weight:800}
 button.danger{background:#501e23;border:1px solid #b34454;color:#fff}
 button:hover{filter:brightness(1.1)}
 button:disabled{opacity:.55;cursor:not-allowed}
-
 table{width:100%;border-collapse:collapse;text-align:left}
 th,td{padding:12px 10px;border-bottom:1px solid #273948;white-space:nowrap;font-size:12.5px}
 th{color:#9cabb7;font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;position:sticky;top:0;background:#0f1e2b}
 .table-wrap{overflow-x:auto;border-radius:10px;border:1px solid #263948;margin-top:12px}
 .table-wrap table{min-width:600px}
 .table-wrap.compact table{min-width:520px}
-
 section.block{margin-top:22px}
 section.card > h2{margin-top:0}
-
 .msg{min-height:18px;margin:12px 0 0;color:#d8c092;line-height:1.6;font-size:13px}
-
 .form-2col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .form-2col .full{grid-column:1/-1}
 .form-2col .actions{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-
 .form-inline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:10px;align-items:end}
 .form-inline label.field{min-width:0}
-
-/* ---- responsive ---- */
 @media(max-width:1024px){
   .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grid{grid-template-columns:minmax(0,1fr)}
@@ -155,10 +142,22 @@ section.card > h2{margin-top:0}
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Balance</th><th>Joined</th><th>Manage</th></tr></thead>
-          <tbody id="userRows"><tr><td class="muted" colspan="7">Loading accounts…</td></tr></tbody>
+          <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Balance</th><th>KYC</th><th>2FA</th><th>Joined</th><th>Manage</th></tr></thead>
+          <tbody id="userRows"><tr><td class="muted" colspan="9">Loading accounts…</td></tr></tbody>
         </table>
       </div>
+    </section>
+
+    <section class="card block">
+      <h2>KYC requests · Identity verification</h2>
+      <p class="muted">Review submitted driver licences. Approve to mark the user verified, or reject with a reason visible to them.</p>
+      <div class="table-wrap compact">
+        <table>
+          <thead><tr><th>User</th><th>Doc type</th><th>Document</th><th>Status</th><th>Reason</th><th>Action</th></tr></thead>
+          <tbody id="kycRows"><tr><td class="muted" colspan="6">Loading…</td></tr></tbody>
+        </table>
+      </div>
+      <p id="kycAdminMessage" class="msg" role="status"></p>
     </section>
 
     <section class="card block">
@@ -171,6 +170,18 @@ section.card > h2{margin-top:0}
         </table>
       </div>
       <p id="fundingAdminMessage" class="msg" role="status"></p>
+    </section>
+
+    <section class="card block">
+      <h2>Withdrawal requests · Administrator review</h2>
+      <p class="muted">Approve to finalise payout externally. Reject to return funds to the user's balance. Always confirm the BTC address before approving.</p>
+      <div class="table-wrap compact">
+        <table>
+          <thead><tr><th>User</th><th>Amount</th><th>Fee</th><th>BTC address</th><th>Status</th><th>Reason</th><th>Action</th></tr></thead>
+          <tbody id="withdrawalRows"><tr><td class="muted" colspan="7">Loading…</td></tr></tbody>
+        </table>
+      </div>
+      <p id="withdrawalAdminMessage" class="msg" role="status"></p>
     </section>
 
     <section class="card block">
@@ -190,15 +201,15 @@ section.card > h2{margin-top:0}
     </section>
 
     <section class="card block">
-      <h2>Manual balance adjustment</h2>
-      <p class="muted">All adjustments are recorded in the audit log. Never use this to claim a payment was verified.</p>
-      <form id="adjustForm" class="form-inline">
-        <label class="field"><span>User ID</span><input id="adjustId" min="1" required type="number"/></label>
-        <label class="field"><span>Amount USD (+/−)</span><input id="adjustUSD" required step="0.01" type="number"/></label>
-        <label class="field"><span>Reason</span><input id="adjustReason" maxlength="300" minlength="8" required type="text"/></label>
+      <h2>Deduct / adjust user balance</h2>
+      <p class="muted">Use a negative amount to deduct (e.g. <code>-50</code>), positive to add. Always record a reason — it goes to the audit log.</p>
+      <form id="adjustForm2" class="form-inline">
+        <label class="field"><span>User ID</span><input id="adjustId2" min="1" required type="number"/></label>
+        <label class="field"><span>Amount USD (+ or −)</span><input id="adjustUSD2" required step="0.01" type="number" placeholder="e.g. -50"/></label>
+        <label class="field"><span>Reason</span><input id="adjustReason2" maxlength="300" minlength="8" required type="text"/></label>
         <button type="submit">Apply</button>
       </form>
-      <p id="adjustMessage" class="msg" role="status"></p>
+      <p id="adjustMessage2" class="msg" role="status"></p>
     </section>
   </main>
 </div>
@@ -229,7 +240,7 @@ async function refresh(){
     tbody.replaceChildren();
     for(const user of users){
       const tr=document.createElement('tr');
-      for(const val of [user.id,user.fullName,user.email,user.role,fmt(user.balanceUSD),new Date(user.createdAt).toLocaleDateString()]){
+      for(const val of [user.id,user.fullName,user.email,user.role,fmt(user.balanceUSD),user.kycStatus||'unverified',user.twofaEnabled?'On':'Off',new Date(user.createdAt).toLocaleDateString()]){
         const td=document.createElement('td');td.textContent=val;tr.append(td);
       }
       const action=document.createElement('td');
@@ -240,7 +251,7 @@ async function refresh(){
         document.getElementById('editName').value=user.fullName;
         document.getElementById('editEmail').value=user.email;
         document.getElementById('editPassword').value='';
-        document.getElementById('adjustId').value=user.id;
+        document.getElementById('adjustId2').value=user.id;
         document.getElementById('accountEditForm').scrollIntoView({behavior:'smooth',block:'center'});
       });
       action.append(choose);tr.append(action);tbody.append(tr);
@@ -293,17 +304,70 @@ async function adminFunding(){
   }catch(e){document.getElementById('fundingAdminMessage').textContent=e.message}
 }
 
-document.getElementById('adjustForm').addEventListener('submit',async e=>{
-  e.preventDefault();
-  const m=document.getElementById('adjustMessage');
+async function adminKyc(){
   try{
-    const amount=Number(document.getElementById('adjustUSD').value);
-    const amountCents=Math.round(amount*100);
-    await Elite.post('/api/admin/users/'+encodeURIComponent(document.getElementById('adjustId').value)+'/adjust-balance',{amountCents,reason:document.getElementById('adjustReason').value});
-    m.textContent='Adjustment recorded.';
-    await refresh();
-  }catch(error){m.textContent=error.message}
-});
+    const {requests}=await Elite.apiJSON('/api/admin/kyc');
+    const target=document.getElementById('kycRows');target.replaceChildren();
+    for(const q of requests){
+      const tr=document.createElement('tr');
+      for(const v of [q.userEmail,q.doc_type,q.doc_value,q.status,q.reason||'—']){
+        const td=document.createElement('td');td.textContent=v;tr.append(td);
+      }
+      const td=document.createElement('td');
+      if(q.status==='pending'){
+        const approve=document.createElement('button');approve.textContent='Approve';
+        approve.addEventListener('click',async()=>{
+          approve.disabled=true;
+          try{await Elite.post('/api/admin/kyc/'+q.id+'/decision',{status:'approved'});await adminKyc();await refresh()}
+          catch(e){document.getElementById('kycAdminMessage').textContent=e.message;approve.disabled=false}
+        });
+        const reject=document.createElement('button');reject.textContent='Reject';reject.style.marginLeft='6px';
+        reject.addEventListener('click',async()=>{
+          const reason=prompt('Reason for rejecting KYC #'+q.id+':');
+          if(!reason||reason.trim().length<3)return;
+          reject.disabled=true;
+          try{await Elite.post('/api/admin/kyc/'+q.id+'/decision',{status:'rejected',reason:reason.trim()});await adminKyc();await refresh()}
+          catch(e){document.getElementById('kycAdminMessage').textContent=e.message;reject.disabled=false}
+        });
+        td.append(approve,reject);
+      }
+      tr.append(td);target.append(tr);
+    }
+  }catch(e){document.getElementById('kycAdminMessage').textContent=e.message}
+}
+
+async function adminWithdrawals(){
+  try{
+    const {requests}=await Elite.apiJSON('/api/admin/withdrawals');
+    const target=document.getElementById('withdrawalRows');target.replaceChildren();
+    for(const q of requests){
+      const tr=document.createElement('tr');
+      for(const v of [q.userEmail,'$'+(q.amount_usd_cents/100).toFixed(2),'$'+(q.fee_cents/100).toFixed(2),q.btc_address,q.status,q.reason||'—']){
+        const td=document.createElement('td');td.textContent=v;tr.append(td);
+      }
+      const td=document.createElement('td');
+      if(q.status==='pending'){
+        const approve=document.createElement('button');approve.textContent='Approve';
+        approve.addEventListener('click',async()=>{
+          if(!confirm('Approve withdrawal #'+q.id+' of $'+(q.amount_usd_cents/100).toFixed(2)+'?\nConfirm you have PAID the BTC address externally first.'))return;
+          approve.disabled=true;
+          try{await Elite.post('/api/admin/withdrawals/'+q.id+'/decision',{status:'approved'});await adminWithdrawals();await refresh()}
+          catch(e){document.getElementById('withdrawalAdminMessage').textContent=e.message;approve.disabled=false}
+        });
+        const reject=document.createElement('button');reject.textContent='Reject';reject.style.marginLeft='6px';
+        reject.addEventListener('click',async()=>{
+          const reason=prompt('Reason for rejecting withdrawal #'+q.id+' (funds will return to user):');
+          if(!reason||reason.trim().length<3)return;
+          reject.disabled=true;
+          try{await Elite.post('/api/admin/withdrawals/'+q.id+'/decision',{status:'rejected',reason:reason.trim()});await adminWithdrawals();await refresh()}
+          catch(e){document.getElementById('withdrawalAdminMessage').textContent=e.message;reject.disabled=false}
+        });
+        td.append(approve,reject);
+      }
+      tr.append(td);target.append(tr);
+    }
+  }catch(e){document.getElementById('withdrawalAdminMessage').textContent=e.message}
+}
 
 const accountForm=document.getElementById('accountEditForm'),accountMsg=document.getElementById('accountMessage');
 accountForm.addEventListener('submit',async e=>{
@@ -339,8 +403,23 @@ document.getElementById('deleteUserButton').addEventListener('click',async()=>{
   }catch(err){accountMsg.textContent=err.message}
 });
 
-adminFunding();
-start();
+document.getElementById('adjustForm2').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const m=document.getElementById('adjustMessage2');
+  try{
+    const amount=Number(document.getElementById('adjustUSD2').value);
+    const amountCents=Math.round(amount*100);
+    await Elite.post('/api/admin/users/'+encodeURIComponent(document.getElementById('adjustId2').value)+'/adjust-balance',{amountCents,reason:document.getElementById('adjustReason2').value});
+    m.textContent=(amount<0?'Deduction':'Adjustment')+' recorded.';
+    document.getElementById('adjustForm2').reset();
+    await refresh();
+  }catch(error){m.textContent=error.message}
+});
+
+adminFunding();adminKyc();adminWithdrawals();start();
+setInterval(adminKyc,15000);
+setInterval(adminWithdrawals,15000);
+setInterval(adminFunding,15000);
 </script>
 </body>
 </html>
