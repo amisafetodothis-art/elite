@@ -9,9 +9,10 @@
 <style>
 @import url(https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap);
 :root{--bg:#08101b;--pane:#111e2b;--pane2:#162433;--gold:#d5b77c;--ink:#f6f5ef;--mute:#91a1af;--edge:rgba(255,255,255,.115);--green:#60cea9;--red:#f18d8e}*{box-sizing:border-box}body{margin:0;background:#08101b;color:var(--ink);font-family:'DM Sans',sans-serif}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #edce90;outline-offset:3px}button:disabled{opacity:.5;cursor:not-allowed}img{max-width:100%}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.02em}.brand b{color:#edce90}.mark{width:35px;height:35px;background:linear-gradient(135deg,#f4dca7,#b68d50);color:#07121d;display:grid;place-items:center;clip-path:polygon(0 0,100% 0,100% 72%,70% 100%,0 100%);font-size:22px;font-weight:900}.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 23px;border:1px solid transparent;border-radius:9px;font-size:13px;font-weight:750;transition:.25s}.button:hover{transform:translateY(-2px)}.primary{background:linear-gradient(120deg,#f0d8a8,#bc9457);color:#081421}.ghost{background:rgba(255,255,255,.045);border-color:var(--edge);color:#f6f5ef}.eyebrow{color:#dfbd7f;text-transform:uppercase;letter-spacing:.21em;font-size:11px;font-weight:800}.eyebrow:before{content:'';display:inline-block;width:20px;height:1px;background:currentColor;vertical-align:middle;margin-right:10px}.muted{color:#9aabb7}.full{width:100%}.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid var(--edge);border-radius:50px;color:#b0bec8;font-size:11px}.badge .live-dot{width:7px;height:7px;background:#6bd5ae;border-radius:50%;box-shadow:0 0 0 4px #6bd5ae1a}.up{color:var(--green)!important}.down{color:var(--red)!important}.vline{height:1px;background:var(--edge)}.smallnote{font-size:11px;line-height:1.65;color:#8498a7}.skeleton{display:inline-block;vertical-align:middle;min-width:76px;height:1.05em;border-radius:6px;background:linear-gradient(90deg,#263849 15%,#45586a 45%,#263849 75%);background-size:220% 100%;animation:shimmer 1.45s infinite}.skeleton.long{min-width:175px}.is-loading{color:transparent!important}@keyframes shimmer{to{background-position-x:-220%}}@media(prefers-reduced-motion:reduce){.skeleton{animation:none}}
-.app{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:100svh}.sidebar{border-right:1px solid var(--edge);background:#0c1723;display:flex;flex-direction:column;gap:29px;padding:28px 18px;position:sticky;top:0;height:100svh}.sidebar .brand{margin-left:8px}.side-links{display:flex;flex-direction:column;gap:6px}.side-links a{display:flex;align-items:center;gap:14px;color:#93a7b5;font-size:13px;padding:14px 15px;border-radius:9px}.side-links a.active,.side-links a:hover{color:#f4dab0;background:#1a2c3c}.side-links svg{width:18px;height:18px}.side-bottom{margin-top:auto;border-top:1px solid var(--edge);padding-top:19px}.work{min-width:0}.workspace-top{height:82px;padding:0 38px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--edge)}.workcontent{padding:36px clamp(19px,3.1vw,46px) 80px;max-width:1600px;margin:auto}.workspace-top h1{font-size:13px;font-weight:650}.page-title{font:600 clamp(34px,3.5vw,50px)/1.15 Manrope,sans-serif;letter-spacing:-.055em;margin:12px 0}.page-sub{font-size:13px;color:#91a5b4;line-height:1.8;margin-bottom:28px}.panel{border:1px solid var(--edge);border-radius:15px;background:linear-gradient(150deg,#142333,#0d1926);padding:27px;min-width:0}.section-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:24px;flex-wrap:wrap}.section-heading h2{font-size:17px;margin:0;letter-spacing:-.03em}.markets-table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap}.markets-table th{font-size:10px;color:#8499a7;text-transform:uppercase;letter-spacing:.11em;font-weight:650;padding:14px 6px}.markets-table td{font-size:13px;border-top:1px solid var(--edge);padding:16px 6px}.table-scroll{overflow-x:auto}.asset-name{display:flex;gap:12px;align-items:center}.asset-name .coin{width:33px;height:33px}.chart-header{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.chart-price{font:650 clamp(28px,3vw,45px) Manrope,sans-serif;letter-spacing:-.06em}.chart-label{color:#98a9b5;font-size:12px}.plot{width:100%;height:270px;display:block;overflow:visible}.legend{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:11px;color:#9badb9}@media(max-width:1080px){.sidebar{width:78px;padding:26px 10px;align-items:center}.sidebar .brand span:last-child,.side-links a span,.side-bottom{display:none}.side-links a{justify-content:center}.app{grid-template-columns:78px minmax(0,1fr)}}@media(max-width:720px){.app{display:block}.sidebar{display:none}.workspace-mobile{display:flex;position:sticky;top:0;z-index:20;justify-content:space-around;gap:3px;overflow:auto;background:#101e2c;border-bottom:1px solid var(--edge);padding:9px 5px}.workspace-mobile a{font-size:10px;color:#a1b4c2;padding:8px 6px;display:flex;align-items:center;gap:5px;flex-direction:column;min-width:61px}.workspace-mobile svg{width:17px;height:17px}.workspace-top{height:70px;padding:0 20px}.panel{padding:20px}.plot{height:225px}.workcontent{padding-top:27px}}
+.app{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:100svh}.sidebar{border-right:1px solid var(--edge);background:#0c1723;display:flex;flex-direction:column;gap:29px;padding:28px 18px;position:sticky;top:0;height:100svh}.sidebar .brand{margin-left:8px}.side-links{display:flex;flex-direction:column;gap:6px}.side-links a{display:flex;align-items:center;gap:14px;color:#93a7b5;font-size:13px;padding:14px 15px;border-radius:9px}.side-links a.active,.side-links a:hover{color:#f4dab0;background:#1a2c3c}.side-links svg{width:18px;height:18px}.side-bottom{margin-top:auto;border-top:1px solid var(--edge);padding-top:19px}.work{min-width:0}.workspace-top{height:82px;padding:0 38px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--edge)}.workcontent{padding:36px clamp(19px,3.1vw,46px) 80px;max-width:1600px;margin:auto}.workspace-top h1{font-size:13px;font-weight:650}.page-title{font:600 clamp(34px,3.5vw,50px)/1.15 Manrope,sans-serif;letter-spacing:-.055em;margin:12px 0}.page-sub{font-size:13px;color:#91a5b4;line-height:1.8;margin-bottom:28px}.panel{border:1px solid var(--edge);border-radius:15px;background:linear-gradient(150deg,#142333,#0d1926);padding:27px;min-width:0}.section-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:24px;flex-wrap:wrap}.section-heading h2{font-size:17px;margin:0;letter-spacing:-.03em}.markets-table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap}.markets-table th{font-size:10px;color:#8499a7;text-transform:uppercase;letter-spacing:.11em;font-weight:650;padding:14px 6px}.markets-table td{font-size:13px;border-top:1px solid var(--edge);padding:16px 6px}.table-scroll{overflow-x:auto}.asset-name{display:flex;gap:12px;align-items:center}.asset-name .coin{width:33px;height:33px}.chart-header{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.chart-price{font:650 clamp(28px,3vw,45px) Manrope,sans-serif;letter-spacing:-.06em}.chart-label{color:#98a9b5;font-size:12px}.legend{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:11px;color:#9badb9}@media(max-width:1080px){.sidebar{width:78px;padding:26px 10px;align-items:center}.sidebar .brand span:last-child,.side-links a span,.side-bottom{display:none}.side-links a{justify-content:center}.app{grid-template-columns:78px minmax(0,1fr)}}@media(max-width:720px){.app{display:block}.sidebar{display:none}.workspace-mobile{display:flex;position:sticky;top:0;z-index:20;justify-content:space-around;gap:3px;overflow:auto;background:#101e2c;border-bottom:1px solid var(--edge);padding:9px 5px}.workspace-mobile a{font-size:10px;color:#a1b4c2;padding:8px 6px;display:flex;align-items:center;gap:5px;flex-direction:column;min-width:61px}.workspace-mobile svg{width:17px;height:17px}.workspace-top{height:70px;padding:0 20px}.panel{padding:20px}.workcontent{padding-top:27px}}
 </style>
 <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.production.js"></script>
 <script src="elite-core.js"></script>
 <style>
 @media(max-width:720px){
@@ -27,13 +28,14 @@
   .table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .workspace-mobile{overflow-x:auto;justify-content:flex-start!important}
   .workspace-mobile a{flex:1;min-width:59px}
-  svg.plot{max-width:100%}
   button,.button{max-width:100%}
 }
 @media(max-width:390px){
   .workspace-mobile a{font-size:9px!important;min-width:52px!important;padding:6px 2px!important}
   .panel{padding:15px!important}
 }
+#candleChart{width:100%;height:320px}
+@media(max-width:720px){#candleChart{height:260px}}
 </style>
 </head>
 <body data-page-user="true">
@@ -74,7 +76,7 @@
         <div class="section-heading">
           <div>
             <h2>Bitcoin / US Dollar</h2>
-            <div class="chart-label" style="margin-top:8px">BTC/USD · Kraken spot market · 1-minute candlesticks</div>
+            <div class="chart-label" style="margin-top:8px">BTC/USD · Coinbase Exchange · 1-minute candles</div>
           </div>
           <div class="badge"><span class="live-dot"></span> Exchange data</div>
         </div>
@@ -82,10 +84,8 @@
           <strong class="chart-price" id="chartLast"><span class="skeleton"></span></strong>
           <span class="chart-label" id="chartDiff"><span class="skeleton"></span></span>
         </div>
-        <svg aria-label="Live Bitcoin candlestick price chart" class="plot" id="priceChart" preserveaspectratio="none" role="img" viewbox="0 0 900 270">
-          <text fill="#9bacb8" font-size="15" text-anchor="middle" x="450" y="140">Loading chart…</text>
-        </svg>
-        <div class="legend">
+        <div id="candleChart" style="margin-top:16px"></div>
+        <div class="legend" style="margin-top:14px">
           <span><span style="color:#60cea9">●</span> Price increase</span>
           <span><span style="color:#f18d8e">●</span> Price decrease</span>
           <span id="feed-status"><span class="skeleton"></span></span>
@@ -122,6 +122,88 @@ const formatUSD=v=>Number.isFinite(v)?new Intl.NumberFormat('en-US',{style:'curr
 function loaded(el,txt){if(!el)return;el.textContent=txt;el.classList.remove('skeleton','long')}
 async function fetchJSON(url,timeout=10000){const ac=new AbortController(),timer=setTimeout(()=>ac.abort(),timeout);try{const r=await fetch(url,{signal:ac.signal,cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return await r.json()}finally{clearTimeout(timer)}}
 
+// ---- Coinbase Candle Chart ----
+const chartContainer = document.getElementById('candleChart');
+const chartLastEl = document.getElementById('chartLast');
+const chartDiffEl = document.getElementById('chartDiff');
+const feedStatusEl = document.getElementById('feed-status');
+
+let chart = null, candleSeries = null, lastPrice = null;
+
+function initChart() {
+  if (!chartContainer) return;
+  if (!window.LightweightCharts) {
+    setTimeout(initChart, 500);
+    return;
+  }
+  chart = LightweightCharts.createChart(chartContainer, {
+    layout: { background: { color: 'transparent' }, textColor: '#98a9b5', fontSize: 11 },
+    grid: { vertLines: { color: 'rgba(255,255,255,.04)' }, horzLines: { color: 'rgba(255,255,255,.04)' } },
+    rightPriceScale: { borderColor: 'rgba(255,255,255,.1)', scaleMargins: { top: 0.1, bottom: 0.1 } },
+    timeScale: { borderColor: 'rgba(255,255,255,.1)', timeVisible: true, secondsVisible: false },
+    crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
+    handleScroll: true, handleScale: true,
+  });
+  candleSeries = chart.addCandlestickSeries({
+    upColor: '#60cea9',
+    downColor: '#f18d8e',
+    borderVisible: false,
+    wickUpColor: '#60cea9',
+    wickDownColor: '#f18d8e',
+  });
+
+  const ro = new ResizeObserver(() => {
+    if (!chartContainer || !chart) return;
+    chart.applyOptions({ width: chartContainer.clientWidth, height: chartContainer.clientHeight });
+  });
+  ro.observe(chartContainer);
+
+  fetchCandles();
+  setInterval(fetchCandles, 60000);
+}
+
+async function fetchCandles() {
+  if (!candleSeries) return;
+  try {
+    // Coinbase Exchange public candles: [time, low, high, open, close, volume]
+    const res = await fetch('https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=60', { cache: 'no-store' });
+    if (!res.ok) throw Error('HTTP ' + res.status);
+    const rows = await res.json();
+    if (!Array.isArray(rows) || !rows.length) throw Error('empty');
+
+    const candles = rows.map(r => ({
+      time: r[0],
+      low: parseFloat(r[1]),
+      high: parseFloat(r[2]),
+      open: parseFloat(r[3]),
+      close: parseFloat(r[4]),
+    })).filter(c => Number.isFinite(c.close) && Number.isFinite(c.time)).sort((a, b) => a.time - b.time);
+
+    if (!candles.length) throw Error('no valid candles');
+
+    candleSeries.setData(candles);
+    chart.timeScale().fitContent();
+
+    const last = candles[candles.length - 1];
+    const price = last.close;
+    if (chartLastEl) loaded(chartLastEl, formatUSD(price));
+
+    if (lastPrice && chartDiffEl) {
+      const pct = ((price - lastPrice) / lastPrice) * 100;
+      loaded(chartDiffEl, (pct >= 0 ? '+' : '') + pct.toFixed(4) + '%');
+      chartDiffEl.classList.toggle('up', pct >= 0);
+      chartDiffEl.classList.toggle('down', pct < 0);
+    }
+    lastPrice = price;
+
+    if (feedStatusEl) loaded(feedStatusEl, 'Coinbase Exchange · ' + new Date().toLocaleTimeString());
+  } catch (e) {
+    if (feedStatusEl) loaded(feedStatusEl, 'Coinbase unavailable · retrying');
+  }
+}
+
+initChart();
+
 // ---- Market snapshot ----
 async function marketSnapshot(){
   try{
@@ -152,101 +234,6 @@ async function marketSnapshot(){
   }
 }
 marketSnapshot();setInterval(marketSnapshot,60000);
-
-// ---- Candlestick chart (SVG) ----
-const plot=document.querySelector('#priceChart'),chartStatus=document.querySelector('#feed-status'),chartPrice=document.querySelector('#chartLast'),chartDiff=document.querySelector('#chartDiff');
-let candles=[],lastPrice=null,lastGood=0,ws=null,reconnect=null,pollBusy=false;
-
-function paint(){
-  if(!plot||candles.length<2)return;
-  const W=900,H=270,pad=25;
-  const mi=Math.min(...candles.map(d=>d.low)),ma=Math.max(...candles.map(d=>d.high)),range=Math.max(1,ma-mi);
-  const step=(W-pad*2)/candles.length,body=Math.max(2,Math.min(11,step*.57));
-  let lines='';
-  for(let i=0;i<=4;i++){const y=pad+i*(H-2*pad)/4;lines+=`<line x1="0" y1="${y}" x2="900" y2="${y}" stroke="#ffffff12"/>`}
-  for(let i=0;i<candles.length;i++){
-    const c=candles[i],x=pad+(i+.5)*step,y=v=>pad+(ma-v)/range*(H-2*pad);
-    const color=c.close>=c.open?'#60cea9':'#f18d8e';
-    lines+=`<line x1="${x}" y1="${y(c.high)}" x2="${x}" y2="${y(c.low)}" stroke="${color}"/><rect x="${x-body/2}" y="${Math.min(y(c.open),y(c.close))}" width="${body}" height="${Math.max(1,Math.abs(y(c.open)-y(c.close)))}" fill="${color}" rx="1"/>`;
-  }
-  plot.innerHTML=lines;
-}
-function changeQuote(value,source){
-  if(!Number.isFinite(value)||value<=0)return;
-  const prior=lastPrice;lastPrice=value;
-  loaded(chartPrice,formatUSD(value));
-  if(prior&&chartDiff){
-    const p=(value-prior)/prior*100;
-    loaded(chartDiff,(p>=0?'+':'')+p.toFixed(4)+'% · latest change');
-    chartDiff.classList.toggle('up',p>=0);
-    chartDiff.classList.toggle('down',p<0);
-  }
-  lastGood=Date.now();
-  if(source)loaded(chartStatus,source+' · '+new Date().toLocaleTimeString());
-}
-function applyCandles(data){
-  if(!Array.isArray(data))return;
-  for(const raw of data){
-    const c={time:new Date(raw.interval_begin||raw.timestamp||Date.now()).getTime(),open:Number(raw.open),high:Number(raw.high),low:Number(raw.low),close:Number(raw.close)};
-    if(!Number.isFinite(c.close)||!Number.isFinite(c.time))continue;
-    const idx=candles.findIndex(x=>x.time===c.time);
-    if(idx>=0)candles[idx]=c;else candles.push(c);
-  }
-  candles.sort((a,b)=>a.time-b.time);
-  candles=candles.slice(-70);
-  paint();
-  if(candles.length)changeQuote(candles.at(-1).close);
-}
-async function candlesREST(){
-  if(pollBusy||!plot)return;
-  pollBusy=true;
-  try{
-    const j=await fetchJSON('https://api.kraken.com/0/public/OHLC?pair=XBTUSD&interval=1',9000);
-    const list=Object.values(j.result||{}).find(Array.isArray);
-    if(!list||!list.length)throw Error('No Kraken candles');
-    applyCandles(list.slice(-70).map(c=>({timestamp:new Date(Number(c[0])*1000).toISOString(),open:c[1],high:c[2],low:c[3],close:c[4]})));
-    loaded(chartStatus,'Kraken REST candles · '+new Date().toLocaleTimeString());
-  }catch(e){
-    try{
-      const end=Math.floor(Date.now()/1000),start=end-60*65;
-      const j=await fetchJSON(`https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=60&start=${new Date(start*1000).toISOString()}&end=${new Date(end*1000).toISOString()}`,9000);
-      if(!Array.isArray(j)||!j.length)throw Error('No Coinbase candles');
-      applyCandles(j.map(c=>({timestamp:new Date(c[0]*1000).toISOString(),low:c[1],high:c[2],open:c[3],close:c[4]})));
-      loaded(chartStatus,'Coinbase Exchange candles · '+new Date().toLocaleTimeString());
-    }catch(e2){
-      loaded(chartStatus,'Market data unavailable · retrying');
-    }
-  }finally{pollBusy=false}
-}
-function connect(){
-  if(!plot||document.hidden)return;
-  try{
-    if(ws&&[0,1].includes(ws.readyState))return;
-    ws=new WebSocket('wss://ws.kraken.com/v2');
-    ws.onopen=()=>{
-      ws.send(JSON.stringify({method:'subscribe',params:{channel:'ohlc',symbol:['BTC/USD'],interval:1,snapshot:true}}));
-      ws.send(JSON.stringify({method:'subscribe',params:{channel:'ticker',symbol:['BTC/USD'],snapshot:true}}));
-    };
-    ws.onmessage=e=>{
-      let m;try{m=JSON.parse(e.data)}catch{return}
-      if(m.channel==='ohlc'&&m.data?.length){
-        applyCandles(m.data);
-        loaded(chartStatus,'Kraken live candles · '+new Date().toLocaleTimeString());
-      }
-      if(m.channel==='ticker'&&m.data?.[0]){
-        changeQuote(Number(m.data[0].last),'Kraken streaming · '+new Date().toLocaleTimeString());
-      }
-    };
-    ws.onclose=()=>{ws=null;clearTimeout(reconnect);reconnect=setTimeout(connect,11000);};
-    ws.onerror=()=>ws.close();
-  }catch(e){clearTimeout(reconnect);reconnect=setTimeout(connect,11000);}
-}
-if(plot){
-  candlesREST();
-  connect();
-  setInterval(()=>{if(Date.now()-lastGood>18000)candlesREST()},17000);
-  document.addEventListener('visibilitychange',()=>{if(!document.hidden){candlesREST();connect();}});
-}
 
 // ---- Account balance poll ----
 async function refreshBalance(){
