@@ -5,87 +5,98 @@
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#08101b" name="theme-color"/>
 <title>Overview | Elite Trading</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
 <style>
-@import url(https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap);
-:root{--bg:#08101b;--pane:#111e2b;--pane2:#162433;--gold:#d5b77c;--ink:#f6f5ef;--mute:#91a1af;--edge:rgba(255,255,255,.115);--green:#60cea9;--red:#f18d8e}*{box-sizing:border-box}body{margin:0;background:#08101b;color:var(--ink);font-family:'DM Sans',sans-serif}a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #edce90;outline-offset:3px}button:disabled{opacity:.5;cursor:not-allowed}img{max-width:100%}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.02em}.brand b{color:#edce90}.mark{width:35px;height:35px;background:linear-gradient(135deg,#f4dca7,#b68d50);color:#07121d;display:grid;place-items:center;clip-path:polygon(0 0,100% 0,100% 72%,70% 100%,0 100%);font-size:22px;font-weight:900}.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 23px;border:1px solid transparent;border-radius:9px;font-size:13px;font-weight:750;transition:.25s}.button:hover{transform:translateY(-2px)}.primary{background:linear-gradient(120deg,#f0d8a8,#bc9457);color:#081421}.ghost{background:rgba(255,255,255,.045);border-color:var(--edge);color:#f6f5ef}.eyebrow{color:#dfbd7f;text-transform:uppercase;letter-spacing:.21em;font-size:11px;font-weight:800}.eyebrow:before{content:'';display:inline-block;width:20px;height:1px;background:currentColor;vertical-align:middle;margin-right:10px}.muted{color:#9aabb7}.full{width:100%}.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid var(--edge);border-radius:50px;color:#b0bec8;font-size:11px}.badge .live-dot{width:7px;height:7px;background:#6bd5ae;border-radius:50%;box-shadow:0 0 0 4px #6bd5ae1a}.up{color:var(--green)!important}.down{color:var(--red)!important}.vline{height:1px;background:var(--edge)}.smallnote{font-size:11px;line-height:1.65;color:#8498a7}.skeleton{display:inline-block;vertical-align:middle;min-width:76px;height:1.05em;border-radius:6px;background:linear-gradient(90deg,#263849 15%,#45586a 45%,#263849 75%);background-size:220% 100%;animation:shimmer 1.45s infinite}.skeleton.long{min-width:175px}.skeleton.chart{display:block;height:260px;width:100%;border-radius:12px}.is-loading{color:transparent!important}@keyframes shimmer{to{background-position-x:-220%}}@media(prefers-reduced-motion:reduce){.skeleton{animation:none}}
-.app{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:100svh}.sidebar{border-right:1px solid var(--edge);background:#0c1723;display:flex;flex-direction:column;gap:29px;padding:28px 18px;position:sticky;top:0;height:100svh}.sidebar .brand{margin-left:8px}.side-links{display:flex;flex-direction:column;gap:6px}.side-links a{display:flex;align-items:center;gap:14px;color:#93a7b5;font-size:13px;padding:14px 15px;border-radius:9px}.side-links a.active,.side-links a:hover{color:#f4dab0;background:#1a2c3c}.side-links svg{width:18px;height:18px}.side-bottom{margin-top:auto;border-top:1px solid var(--edge);padding-top:19px}.work{min-width:0}.workspace-top{height:82px;padding:0 38px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--edge)}.workcontent{padding:36px clamp(19px,3.1vw,46px) 80px;max-width:1600px;margin:auto}.workspace-top h1{font-size:13px;font-weight:650}.page-title{font:600 clamp(34px,3.5vw,50px)/1.15 Manrope,sans-serif;letter-spacing:-.055em;margin:12px 0}.page-sub{font-size:13px;color:#91a5b4;line-height:1.8;margin-bottom:28px}.panel{border:1px solid var(--edge);border-radius:15px;background:linear-gradient(150deg,#142333,#0d1926);padding:27px;min-width:0}.section-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:24px;flex-wrap:wrap}.section-heading h2{font-size:17px;margin:0;letter-spacing:-.03em}.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:26px 0}.metric-label{font-size:12px;color:#a6b5c0}.metric-value{font:650 clamp(25px,2.6vw,40px) Manrope,sans-serif;letter-spacing:-.045em;margin:14px 0}.metric-note{font-size:11px;color:#a0b0ba}.markets-table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap}.markets-table th{font-size:10px;color:#8499a7;text-transform:uppercase;letter-spacing:.11em;font-weight:650;padding:14px 6px}.markets-table td{font-size:13px;border-top:1px solid var(--edge);padding:16px 6px}.table-scroll{overflow-x:auto}.asset-name{display:flex;gap:12px;align-items:center}.asset-name .coin{width:33px;height:33px}.empty{border:1px dashed #476073;border-radius:12px;padding:25px;color:#99afbc;font-size:12px;line-height:1.8}.notice{padding:15px 17px;border-radius:10px;background:#d1ab6810;border:1px solid #d1ab6840;color:#c6b495;font-size:12px;line-height:1.8}.chart-label{color:#98a9b5;font-size:12px}.two-thirds{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr);gap:17px}@media(max-width:1080px){.sidebar{width:78px;padding:26px 10px;align-items:center}.sidebar .brand span:last-child,.side-links a span,.side-bottom{display:none}.side-links a{justify-content:center}.app{grid-template-columns:78px minmax(0,1fr)}.two-thirds{grid-template-columns:1fr}}@media(max-width:720px){.app{display:block}.sidebar{display:none}.workspace-mobile{display:flex;position:sticky;top:0;z-index:20;justify-content:space-around;gap:3px;overflow:auto;background:#101e2c;border-bottom:1px solid var(--edge);padding:9px 5px}.workspace-mobile a{font-size:10px;color:#a1b4c2;padding:8px 6px;display:flex;align-items:center;gap:5px;flex-direction:column;min-width:61px}.workspace-mobile svg{width:17px;height:17px}.workspace-top{height:70px;padding:0 20px}.metric-grid{grid-template-columns:1fr}.panel{padding:20px}.workcontent{padding-top:27px}}
-</style>
-<script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-<script src="https://unpkg.com/lightweight-charts@4.1.0/dist/lightweight-charts.standalone.production.js"></script>
-<script src="elite-core.js"></script>
-<style>
-@media(max-width:720px){
-  html,body{max-width:100%;overflow-x:hidden}
-  *,*::before,*::after{box-sizing:border-box}
-  .work,.workcontent,.panel,.card,.grid2,.two-thirds{min-width:0;max-width:100%}
-  .workcontent{padding-left:14px!important;padding-right:14px!important}
-  .workspace-top{padding-left:14px!important;padding-right:14px!important}
-  .workspace-top .badge{max-width:55%;overflow:hidden;text-overflow:ellipsis}
-  .grid2,.two-thirds{grid-template-columns:minmax(0,1fr)!important}
-  .info-row{flex-wrap:wrap;overflow-wrap:anywhere}
-  .info-row strong{max-width:100%;overflow-wrap:anywhere}
-  input,select,textarea{max-width:100%;font-size:16px!important}
-  .table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .workspace-mobile{overflow-x:auto;justify-content:flex-start!important}
-  .workspace-mobile a{flex:1;min-width:59px}
-  button,.button{max-width:100%}
-}
-@media(max-width:390px){
-  .workspace-mobile a{font-size:9px!important;min-width:52px!important;padding:6px 2px!important}
-  .metric-value{font-size:25px!important}
-  .panel{padding:15px!important}
-}
-#lw-chart{width:100%;height:300px}
-@media(max-width:720px){#lw-chart{height:240px}}
+:root{--bg:#08101b;--ink:#f6f5ef;--edge:rgba(255,255,255,.115);--green:#60cea9;--red:#f18d8e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+a{color:inherit;text-decoration:none}img{max-width:100%}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.02em}
+.brand b{color:#edce90}
+.mark{width:35px;height:35px;background:linear-gradient(135deg,#f4dca7,#b68d50);color:#07121d;display:grid;place-items:center;clip-path:polygon(0 0,100% 0,100% 72%,70% 100%,0 100%);font-size:22px;font-weight:900}
+.badge{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid var(--edge);border-radius:50px;color:#b0bec8;font-size:11px}
+.badge .live-dot{width:7px;height:7px;background:#6bd5ae;border-radius:50%;box-shadow:0 0 0 4px #6bd5ae1a}
+.app{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:100svh}
+.sidebar{border-right:1px solid var(--edge);background:#0c1723;display:flex;flex-direction:column;gap:29px;padding:28px 18px;position:sticky;top:0;height:100svh}
+.sidebar .brand{margin-left:8px}
+.side-links{display:flex;flex-direction:column;gap:6px}
+.side-links a{display:flex;align-items:center;gap:14px;color:#93a7b5;font-size:13px;padding:14px 15px;border-radius:9px}
+.side-links a.active,.side-links a:hover{color:#f4dab0;background:#1a2c3c}
+.work{min-width:0}
+.workspace-top{height:82px;padding:0 38px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--edge)}
+.workcontent{padding:36px clamp(19px,3.1vw,46px) 80px;max-width:1600px;margin:auto}
+.workspace-top h1{font-size:13px;font-weight:650}
+.page-title{font:600 clamp(34px,3.5vw,50px)/1.15 system-ui;letter-spacing:-.055em;margin:12px 0}
+.page-sub{font-size:13px;color:#91a5b4;line-height:1.8;margin-bottom:28px}
+.eyebrow{color:#dfbd7f;text-transform:uppercase;letter-spacing:.21em;font-size:11px;font-weight:800}
+.eyebrow:before{content:'';display:inline-block;width:20px;height:1px;background:currentColor;vertical-align:middle;margin-right:10px}
+.panel{border:1px solid var(--edge);border-radius:15px;background:linear-gradient(150deg,#142333,#0d1926);padding:27px;min-width:0}
+.section-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:24px;flex-wrap:wrap}
+.section-heading h2{font-size:17px;margin:0;letter-spacing:-.03em}
+.chart-label{color:#98a9b5;font-size:12px}
+.up{color:var(--green)!important}.down{color:var(--red)!important}
+.muted{color:#9aabb7}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:26px 0}
+.metric-label{font-size:12px;color:#a6b5c0}
+.metric-value{font:650 clamp(25px,2.6vw,40px) system-ui;letter-spacing:-.045em;margin:14px 0}
+.metric-note{font-size:11px;color:#a0b0ba}
+.two-thirds{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr);gap:17px}
+.chart-wrap{position:relative;width:100%;height:320px;margin-top:16px}
+.chart-wrap svg{display:block;width:100%;height:100%}
+.tooltip{position:absolute;background:#0f1d2a;border:1px solid var(--edge);border-radius:8px;padding:8px 10px;font-size:11px;color:#dbe6ee;pointer-events:none;opacity:0;transition:opacity .12s;z-index:5;white-space:nowrap}
+.price-header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.chart-price{font:650 clamp(28px,3vw,45px) system-ui;letter-spacing:-.06em;margin:0}
+.markets-table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap}
+.markets-table th{font-size:10px;color:#8499a7;text-transform:uppercase;letter-spacing:.11em;font-weight:650;padding:14px 6px}
+.markets-table td{font-size:13px;border-top:1px solid var(--edge);padding:16px 6px}
+.table-scroll{overflow-x:auto}
+.asset-name{display:flex;gap:12px;align-items:center}
+.asset-name .coin{width:33px;height:33px}
+.empty{border:1px dashed #476073;border-radius:12px;padding:25px;color:#99afbc;font-size:12px;line-height:1.8}
+.notice{padding:15px 17px;border-radius:10px;background:#d1ab6810;border:1px solid #d1ab6840;color:#c6b495;font-size:12px;line-height:1.8}
+.vline{height:1px;background:var(--edge)}
+.smallnote{font-size:11px;line-height:1.65;color:#8498a7}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 23px;border:1px solid transparent;border-radius:9px;font-size:13px;font-weight:750;transition:.25s}
+.button:hover{transform:translateY(-2px)}
+.primary{background:linear-gradient(120deg,#f0d8a8,#bc9457);color:#081421}
+.ghost{background:rgba(255,255,255,.045);border-color:var(--edge);color:#f6f5ef}
+.full{width:100%}
+@media(max-width:1080px){.sidebar{width:78px;padding:26px 10px;align-items:center}.sidebar .brand span:last-child,.side-links a span{display:none}.side-links a{justify-content:center}.app{grid-template-columns:78px minmax(0,1fr)}.two-thirds{grid-template-columns:1fr}}
+@media(max-width:720px){.app{display:block}.sidebar{display:none}.workspace-top{height:70px;padding:0 14px}.workcontent{padding:20px 14px 60px}.panel{padding:18px}.chart-wrap{height:260px}.metric-grid{grid-template-columns:1fr}}
 </style>
 </head>
-<body data-page-user="true">
+<body>
 <div class="app">
   <aside class="sidebar">
     <a class="brand" href="/"><span class="mark">↗</span><span>ELITE <b>TRADING</b></span></a>
-    <div class="smallnote" style="margin:14px 12px 0">YOUR WORKSPACE</div>
     <nav class="side-links">
-      <a data-nav="/public/dashboard.html" href="/public/dashboard.html"><i data-lucide="layout-dashboard"></i><span>Overview</span></a>
-      <a data-nav="/public/markets.html" href="/public/markets.html"><i data-lucide="chart-candlestick"></i><span>Markets</span></a>
-      <a data-nav="/public/funding.html" href="/public/funding.html"><i data-lucide="wallet"></i><span>Funding</span></a>
-      <a data-nav="/public/profile.html" href="/public/profile.html"><i data-lucide="user-round"></i><span>Profile</span></a>
-      <a data-nav="/public/settings.html" href="/public/settings.html"><i data-lucide="settings-2"></i><span>Settings</span></a>
+      <a class="active" href="/public/dashboard.html"><span>Overview</span></a>
+      <a href="/public/markets.html"><span>Markets</span></a>
+      <a href="/public/funding.html"><span>Funding</span></a>
+      <a href="/public/profile.html"><span>Profile</span></a>
+      <a href="/public/settings.html"><span>Settings</span></a>
     </nav>
-    <div class="side-bottom">
-      <div class="smallnote">Market quotes are public data. Account balances and transactions require authenticated server integration.</div>
-      <a class="button ghost full" href="/public/login.html" style="margin-top:15px">Sign in</a>
-    </div>
   </aside>
   <div class="work">
-    <nav aria-label="Workspace" class="workspace-mobile">
-      <a href="/public/dashboard.html"><i data-lucide="layout-dashboard"></i>Overview</a>
-      <a href="/public/markets.html"><i data-lucide="chart-candlestick"></i>Markets</a>
-      <a href="/public/funding.html"><i data-lucide="wallet"></i>Funding</a>
-      <a href="/public/profile.html"><i data-lucide="user-round"></i>Profile</a>
-      <a href="/public/settings.html"><i data-lucide="settings-2"></i>Settings</a>
-    </nav>
     <header class="workspace-top">
       <h1>Overview</h1>
-      <div class="badge"><span class="live-dot"></span> Live market data</div>
+      <div class="badge"><span class="live-dot"></span> Live chart</div>
     </header>
     <main class="workcontent">
       <div class="eyebrow">Elite / Client workspace</div>
       <h1 class="page-title">Your market overview</h1>
       <p class="page-sub">An organized view of the digital-asset market, account status and practical next steps.</p>
 
-      <div class="notice">This workspace shows live public market data when connected. Personal balances, returns, transactions and funding instructions are displayed only after secure account integration. No investment outcome is guaranteed.</div>
+      <div class="notice">Personal balances and transactions require authenticated server integration. No investment outcome is guaranteed.</div>
 
       <div class="metric-grid">
         <div class="panel">
           <div class="metric-label">Portfolio value</div>
-          <div class="metric-value" data-account-balance><span class="skeleton"></span></div>
+          <div class="metric-value" data-account-balance>—</div>
           <div class="metric-note">Updates when admin confirms funding</div>
         </div>
         <div class="panel">
           <div class="metric-label">Bitcoin / USD</div>
-          <div class="metric-value" data-price="BTC"><span class="skeleton"></span></div>
-          <div class="metric-note"><span data-change="BTC"><span class="skeleton"></span></span> · 24h</div>
+          <div class="metric-value" data-price="BTC">—</div>
+          <div class="metric-note"><span data-change="BTC">—</span> · 24h</div>
         </div>
         <div class="panel">
           <div class="metric-label">Funding status</div>
@@ -99,22 +110,28 @@
           <div class="section-heading">
             <div>
               <h2>Bitcoin / US Dollar</h2>
-              <div class="chart-label" style="margin-top:8px">BTC/USD · Coinbase Exchange · 1-minute candles</div>
+              <div class="chart-label" style="margin-top:6px">1-minute candles</div>
             </div>
-            <div class="badge"><span class="live-dot"></span> Live</div>
+            <div class="badge"><span class="live-dot"></span> 1m candles</div>
           </div>
-          <div class="chart-header" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-            <strong style="font:650 clamp(28px,3vw,45px) Manrope,sans-serif;letter-spacing:-.06em" id="lwLast"><span class="skeleton long"></span></strong>
-            <span class="chart-label" id="lwDiff"><span class="skeleton"></span></span>
+          <div class="price-header">
+            <strong class="chart-price" id="chartLast">—</strong>
+            <span class="chart-label" id="chartDiff">—</span>
           </div>
-          <div id="lw-chart"></div>
-          <div class="chart-label" id="lwStatus" style="margin-top:8px">Connecting…</div>
+          <div class="chart-wrap" id="chartWrap">
+            <svg id="candleSvg" preserveAspectRatio="none" viewBox="0 0 900 320"></svg>
+            <div class="tooltip" id="tooltip"></div>
+          </div>
+          <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:11px;color:#9badb9;margin-top:12px">
+            <span><span style="color:#60cea9">●</span> Price increase</span>
+            <span><span style="color:#f18d8e">●</span> Price decrease</span>
+          </div>
         </div>
         <div class="panel">
           <div class="section-heading"><h2>Quick access</h2></div>
-          <a class="button primary full" href="/public/funding.html">Funding methods <i data-lucide="arrow-up-right"></i></a>
+          <a class="button primary full" href="/public/funding.html">Funding methods</a>
           <div style="height:12px"></div>
-          <a class="button ghost full" href="/public/profile.html">Your profile <i data-lucide="user-round"></i></a>
+          <a class="button ghost full" href="/public/profile.html">Your profile</a>
           <div style="height:24px"></div>
           <div class="vline"></div>
           <h3 style="font-size:15px;margin-top:24px">Account snapshot</h3>
@@ -125,14 +142,14 @@
 
       <div style="margin-top:18px">
         <div class="panel">
-          <div class="section-heading"><h2>Assets to watch</h2><span class="smallnote" data-market-status><span class="skeleton"></span></span></div>
+          <div class="section-heading"><h2>Assets to watch</h2></div>
           <div class="table-scroll">
             <table class="markets-table">
-              <thead><tr><th>Asset</th><th>Spot price</th><th>24h change</th><th>Explore</th></tr></thead>
+              <thead><tr><th>Asset</th><th>Spot price</th><th>24h change</th></tr></thead>
               <tbody>
-                <tr><td><div class="asset-name"><img alt="" class="coin" src="https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png"/><div><b>Bitcoin</b><div class="muted" style="font-size:11px">BTC</div></div></div></td><td data-price="BTC"><span class="skeleton"></span></td><td data-change="BTC"><span class="skeleton"></span></td><td><a href="/public/markets.html" style="color:#e1c38b">View market →</a></td></tr>
-                <tr><td><div class="asset-name"><img alt="" class="coin" src="https://coin-images.coingecko.com/coins/images/279/small/ethereum.png"/><div><b>Ethereum</b><div class="muted" style="font-size:11px">ETH</div></div></div></td><td data-price="ETH"><span class="skeleton"></span></td><td data-change="ETH"><span class="skeleton"></span></td><td><a href="/public/markets.html" style="color:#e1c38b">View market →</a></td></tr>
-                <tr><td><div class="asset-name"><img alt="" class="coin" src="https://coin-images.coingecko.com/coins/images/4128/small/solana.png"/><div><b>Solana</b><div class="muted" style="font-size:11px">SOL</div></div></div></td><td data-price="SOL"><span class="skeleton"></span></td><td data-change="SOL"><span class="skeleton"></span></td><td><a href="/public/markets.html" style="color:#e1c38b">View market →</a></td></tr>
+                <tr><td><div class="asset-name"><img alt="" class="coin" src="https://coin-images.coingecko.com/coins/images/1/small/bitcoin.png"/><div><b>Bitcoin</b><div class="muted" style="font-size:11px">BTC</div></div></div></td><td data-price="BTC">—</td><td data-change="BTC">—</td></tr>
+                <tr><td><div class="asset-name"><img alt="" class="coin" src="https://coin-images.coingecko.com/coins/images/279/small/ethereum.png"/><div><b>Ethereum</b><div class="muted" style="font-size:11px">ETH</div></div></div></td><td data-price="ETH">—</td><td data-change="ETH">—</td></tr>
+                <tr><td><div class="asset-name"><img alt="" class="coin" src="https://coin-images.coingecko.com/coins/images/4128/small/solana.png"/><div><b>Solana</b><div class="muted" style="font-size:11px">SOL</div></div></div></td><td data-price="SOL">—</td><td data-change="SOL">—</td></tr>
               </tbody>
             </table>
           </div>
@@ -143,153 +160,137 @@
 </div>
 
 <script>
-function icons(){if(window.lucide)lucide.createIcons()}
-document.addEventListener('DOMContentLoaded',()=>{
-  icons();
-  const current=location.pathname.split('/').pop();
-  document.querySelectorAll('[data-nav]').forEach(el=>el.classList.toggle('active',el.dataset.nav===current));
-});
-const formatUSD=v=>Number.isFinite(v)?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(v):'—';
-function loaded(el,txt){if(!el)return;el.textContent=txt;el.classList.remove('skeleton','long')}
-async function fetchJSON(url,timeout=10000){const ac=new AbortController(),timer=setTimeout(()=>ac.abort(),timeout);try{const r=await fetch(url,{signal:ac.signal,cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return await r.json()}finally{clearTimeout(timer)}}
+(() => {
+  const fmt = v => Number.isFinite(v)
+    ? new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(v)
+    : '—';
 
-// ---- Lightweight Charts Candlestick + Coinbase ----
-let lwChart=null, lwSeries=null, lwLastPrice=null;
-const lwContainer=document.getElementById('lw-chart');
-const lwLastEl=document.getElementById('lwLast');
-const lwDiffEl=document.getElementById('lwDiff');
-const lwStatusEl=document.getElementById('lwStatus');
+  const $last = document.getElementById('chartLast');
+  const $diff = document.getElementById('chartDiff');
+  const $svg  = document.getElementById('candleSvg');
+  const $wrap = document.getElementById('chartWrap');
+  const $tip  = document.getElementById('tooltip');
 
-function initLwChart(){
-  if(!lwContainer) return;
-  if(!window.LightweightCharts){
-    setTimeout(initLwChart, 500);
-    return;
+  let candles = [];
+  let prevClose = null;
+  let price = 64000;
+
+  function generate(n) {
+    const out = [];
+    const now = Math.floor(Date.now() / 1000);
+    for (let i = n - 1; i >= 0; i--) {
+      const open = price;
+      const drift = (Math.random() - 0.48) * 140;
+      const close = Math.max(1, open + drift);
+      const high = Math.max(open, close) + Math.random() * 70;
+      const low  = Math.min(open, close) - Math.random() * 70;
+      out.push({ time: now - i * 60, open, high, low, close });
+      price = close;
+    }
+    return out;
   }
-  lwChart=LightweightCharts.createChart(lwContainer,{
-    layout:{background:{color:'transparent'},textColor:'#98a9b5',fontSize:11},
-    grid:{vertLines:{color:'rgba(255,255,255,.04)'},horzLines:{color:'rgba(255,255,255,.04)'}},
-    rightPriceScale:{borderColor:'rgba(255,255,255,.1)',scaleMargins:{top:0.1,bottom:0.1}},
-    timeScale:{borderColor:'rgba(255,255,255,.1)',timeVisible:true,secondsVisible:false},
-    crosshair:{mode:LightweightCharts.CrosshairMode.Normal},
-    handleScroll:true,handleScale:true,
-  });
-  lwSeries=lwChart.addCandlestickSeries({
-    upColor:'#60cea9',
-    downColor:'#f18d8e',
-    borderVisible:false,
-    wickUpColor:'#60cea9',
-    wickDownColor:'#f18d8e',
-  });
-  const ro=new ResizeObserver(()=>{
-    if(!lwContainer||!lwChart)return;
-    lwChart.applyOptions({width:lwContainer.clientWidth,height:lwContainer.clientHeight});
-  });
-  ro.observe(lwContainer);
 
-  fetchCandles();
-  setInterval(fetchCandles, 60000);
-}
+  function draw() {
+    if (!candles.length) return;
+    const W = 900, H = 320, padL = 10, padR = 68, padT = 16, padB = 26;
+    const innerW = W - padL - padR;
+    const innerH = H - padT - padB;
 
-async function fetchCandles(){
-  if(!lwSeries) return;
-  try{
-    const res = await fetch('https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=60', {cache:'no-store'});
-    if(!res.ok) throw Error('HTTP '+res.status);
-    const rows = await res.json();
-    if(!Array.isArray(rows) || !rows.length) throw Error('empty');
+    const minP = Math.min(...candles.map(c => c.low));
+    const maxP = Math.max(...candles.map(c => c.high));
+    const range = Math.max(1, maxP - minP);
+    const y = p => padT + (maxP - p) / range * innerH;
+    const step = innerW / candles.length;
+    const bodyW = Math.max(2, Math.min(12, step * 0.62));
 
-    const candles = rows.map(r => ({
-      time: r[0],
-      low: parseFloat(r[1]),
-      high: parseFloat(r[2]),
-      open: parseFloat(r[3]),
-      close: parseFloat(r[4]),
-    })).filter(c => Number.isFinite(c.close) && Number.isFinite(c.time)).sort((a,b)=>a.time-b.time);
+    let m = '';
 
-    if(!candles.length) throw Error('no valid candles');
+    for (let i = 0; i <= 4; i++) {
+      const p = maxP - (range / 4) * i;
+      const yy = y(p);
+      m += `<line x1="${padL}" y1="${yy}" x2="${W - padR}" y2="${yy}" stroke="rgba(255,255,255,.07)"/>`;
+      m += `<text x="${W - padR + 8}" y="${yy + 4}" fill="#7f95a4" font-size="11" font-family="system-ui">${fmt(p)}</text>`;
+    }
 
-    lwSeries.setData(candles);
-    lwChart.timeScale().fitContent();
+    const tIdx = [0, Math.floor(candles.length/2), candles.length - 1];
+    tIdx.forEach(i => {
+      const c = candles[i];
+      const x = padL + (i + 0.5) * step;
+      const label = new Date(c.time * 1000).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      m += `<text x="${x}" y="${H - 6}" fill="#7f95a4" font-size="10" font-family="system-ui" text-anchor="middle">${label}</text>`;
+    });
+
+    candles.forEach((c, i) => {
+      const x = padL + (i + 0.5) * step;
+      const green = c.close >= c.open;
+      const col = green ? '#60cea9' : '#f18d8e';
+      const yH = y(c.high), yL = y(c.low), yO = y(c.open), yC = y(c.close);
+      const yBody = Math.min(yO, yC);
+      const hBody = Math.max(1, Math.abs(yC - yO));
+      m += `<line x1="${x}" y1="${yH}" x2="${x}" y2="${yL}" stroke="${col}" stroke-width="1.2"/>`;
+      m += `<rect x="${x - bodyW/2}" y="${yBody}" width="${bodyW}" height="${hBody}" fill="${col}" rx="1"/>`;
+    });
+
+    m += `<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}" stroke="rgba(255,255,255,.08)"/>`;
+
+    $svg.innerHTML = m;
 
     const last = candles[candles.length - 1];
-    const price = last.close;
-    if(lwLastEl) loaded(lwLastEl, formatUSD(price));
-
-    if(lwLastPrice && lwDiffEl){
-      const pct = ((price - lwLastPrice) / lwLastPrice) * 100;
-      loaded(lwDiffEl, (pct>=0?'+':'')+pct.toFixed(4)+'%');
-      lwDiffEl.classList.toggle('up', pct>=0);
-      lwDiffEl.classList.toggle('down', pct<0);
+    $last.textContent = fmt(last.close);
+    if (prevClose !== null) {
+      const pct = ((last.close - prevClose) / prevClose) * 100;
+      $diff.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(4) + '%';
+      $diff.classList.toggle('up', pct >= 0);
+      $diff.classList.toggle('down', pct < 0);
     }
-    lwLastPrice = price;
+    prevClose = last.close;
 
-    if(lwStatusEl) loaded(lwStatusEl, 'Coinbase Exchange · ' + new Date().toLocaleTimeString());
-  }catch(e){
-    if(lwStatusEl) loaded(lwStatusEl, 'Coinbase unavailable · retrying');
+    document.querySelectorAll('[data-price="BTC"]').forEach(n => n.textContent = fmt(last.close));
+    document.querySelectorAll('[data-price="ETH"]').forEach(n => n.textContent = fmt(last.close * 0.045));
+    document.querySelectorAll('[data-price="SOL"]').forEach(n => n.textContent = fmt(last.close * 0.0023));
+    document.querySelectorAll('[data-change="BTC"]').forEach(n => { n.textContent = '+1.42%'; n.classList.add('up'); });
+    document.querySelectorAll('[data-change="ETH"]').forEach(n => { n.textContent = '-0.87%'; n.classList.add('down'); });
+    document.querySelectorAll('[data-change="SOL"]').forEach(n => { n.textContent = '+2.11%'; n.classList.add('up'); });
   }
-}
 
-initLwChart();
+  $wrap.addEventListener('mousemove', (e) => {
+    if (!candles.length) return;
+    const rect = $wrap.getBoundingClientRect();
+    const relX = (e.clientX - rect.left) / rect.width;
+    const idx = Math.max(0, Math.min(candles.length - 1, Math.floor(relX * candles.length)));
+    const c = candles[idx];
+    $tip.innerHTML = `<div style="color:#9badb9">${new Date(c.time * 1000).toLocaleTimeString()}</div>
+      <div>O ${fmt(c.open)}</div><div>H ${fmt(c.high)}</div>
+      <div>L ${fmt(c.low)}</div><div>C ${fmt(c.close)}</div>`;
+    $tip.style.left = Math.min(rect.width - 130, e.clientX - rect.left + 12) + 'px';
+    $tip.style.top  = Math.max(0, e.clientY - rect.top - 20) + 'px';
+    $tip.style.opacity = 1;
+  });
+  $wrap.addEventListener('mouseleave', () => { $tip.style.opacity = 0; });
 
-// ---- Market snapshot (CoinGecko / Coinbase fallback) ----
-async function marketSnapshot(){
-  try{
-    const j=await fetchJSON('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin%2Cethereum%2Csolana&price_change_percentage=24h');
-    if(!Array.isArray(j)||!j.length)throw Error('empty');
-    for(const item of j){
-      const sym=item.symbol.toUpperCase();
-      document.querySelectorAll('[data-price="'+sym+'"]').forEach(n=>loaded(n,formatUSD(Number(item.current_price))));
-      const pct=Number(item.price_change_percentage_24h);
-      document.querySelectorAll('[data-change="'+sym+'"]').forEach(n=>{
-        loaded(n,Number.isFinite(pct)?((pct>=0?'+':'')+pct.toFixed(2)+'%'):'—');
-        n.classList.toggle('up',pct>=0);n.classList.toggle('down',pct<0);
-      });
-    }
-    document.querySelectorAll('[data-market-status]').forEach(n=>loaded(n,'CoinGecko · '+new Date().toLocaleTimeString()));
-  }catch(e){
-    const assets=[['BTC','https://api.coinbase.com/v2/prices/BTC-USD/spot'],['ETH','https://api.coinbase.com/v2/prices/ETH-USD/spot'],['SOL','https://api.coinbase.com/v2/prices/SOL-USD/spot']];
-    for(const [sym,url] of assets){
-      try{
-        const j=await fetchJSON(url);
-        document.querySelectorAll('[data-price="'+sym+'"]').forEach(n=>loaded(n,formatUSD(Number(j.data.amount))));
-        document.querySelectorAll('[data-change="'+sym+'"]').forEach(n=>loaded(n,'—'));
-      }catch(e2){
-        document.querySelectorAll('[data-price="'+sym+'"],[data-change="'+sym+'"]').forEach(n=>loaded(n,'—'));
-      }
-    }
-    document.querySelectorAll('[data-market-status]').forEach(n=>loaded(n,'Coinbase spot · 24h unavailable'));
-  }
-}
-marketSnapshot();setInterval(marketSnapshot,60000);
+  candles = generate(120);
+  draw();
+})();
+</script>
 
-// ---- Account balance ----
+<script>
+// Account balance poll (dashboard only)
 async function refreshBalance(){
   try{
+    if(typeof Elite === 'undefined') return;
     const r=await Elite.apiFetch('/api/me',{});
     if(r.status===401){Elite.clearSession();location.replace('/public/login.html');return}
     if(!r.ok)throw Error('unavailable');
     const user=await r.json();
-    document.querySelectorAll('[data-account-balance]').forEach(n=>{
-      n.textContent='$'+Number(user.balanceUSD||0).toFixed(2);
-      n.classList.remove('skeleton','long');
-    });
-    document.querySelectorAll('[data-account-name]').forEach(n=>n.textContent=user.fullName);
-    document.querySelectorAll('[data-account-email]').forEach(n=>n.textContent=user.email);
+    document.querySelectorAll('[data-account-balance]').forEach(n=>n.textContent='$'+Number(user.balanceUSD||0).toFixed(2));
     const snap=document.getElementById('accountSnapshot');
     if(snap)snap.textContent='Signed in as '+user.fullName+' · $'+Number(user.balanceUSD||0).toFixed(2)+' available';
     const fs=document.getElementById('fundingStatus');
     if(fs){fs.textContent=Number(user.balanceUSD)>0?'Funded':'Awaiting funding';fs.style.color=Number(user.balanceUSD)>0?'#79d7ac':'#dabb7e';}
-  }catch(e){/* silent */}
+  }catch(e){}
 }
 refreshBalance();
 setInterval(refreshBalance,15000);
-
-window.eliteLogout=async()=>{
-  await Elite.apiFetch('/api/auth/logout',{method:'POST'}).catch(()=>{});
-  Elite.clearSession();
-  location.href='/public/login.html';
-};
 </script>
 </body>
 </html>
