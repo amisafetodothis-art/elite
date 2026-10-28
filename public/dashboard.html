@@ -99,7 +99,7 @@
           <div class="section-heading">
             <div>
               <h2>Bitcoin / US Dollar</h2>
-              <div class="chart-label" style="margin-top:8px">BTC/USD · Kraken live stream · area chart</div>
+              <div class="chart-label" style="margin-top:8px">BTC/USD · Coinbase Exchange · 1-minute candles</div>
             </div>
             <div class="badge"><span class="live-dot"></span> Live</div>
           </div>
@@ -153,15 +153,19 @@ const formatUSD=v=>Number.isFinite(v)?new Intl.NumberFormat('en-US',{style:'curr
 function loaded(el,txt){if(!el)return;el.textContent=txt;el.classList.remove('skeleton','long')}
 async function fetchJSON(url,timeout=10000){const ac=new AbortController(),timer=setTimeout(()=>ac.abort(),timeout);try{const r=await fetch(url,{signal:ac.signal,cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return await r.json()}finally{clearTimeout(timer)}}
 
-// ---- Lightweight Charts area chart + Kraken WebSocket ----
-let lwChart=null,lwSeries=null,lwLastPrice=null;
+// ---- Lightweight Charts Candlestick + Coinbase ----
+let lwChart=null, lwSeries=null, lwLastPrice=null;
 const lwContainer=document.getElementById('lw-chart');
 const lwLastEl=document.getElementById('lwLast');
 const lwDiffEl=document.getElementById('lwDiff');
 const lwStatusEl=document.getElementById('lwStatus');
 
 function initLwChart(){
-  if(!lwContainer||!window.LightweightCharts)return;
+  if(!lwContainer) return;
+  if(!window.LightweightCharts){
+    setTimeout(initLwChart, 500);
+    return;
+  }
   lwChart=LightweightCharts.createChart(lwContainer,{
     layout:{background:{color:'transparent'},textColor:'#98a9b5',fontSize:11},
     grid:{vertLines:{color:'rgba(255,255,255,.04)'},horzLines:{color:'rgba(255,255,255,.04)'}},
@@ -170,82 +174,63 @@ function initLwChart(){
     crosshair:{mode:LightweightCharts.CrosshairMode.Normal},
     handleScroll:true,handleScale:true,
   });
-  lwSeries=lwChart.addAreaSeries({
-    lineColor:'#e6c58e',topColor:'rgba(230,197,142,.35)',bottomColor:'rgba(230,197,142,0)',
-    lineWidth:2,priceLineVisible:false,lastValueVisible:true,
+  lwSeries=lwChart.addCandlestickSeries({
+    upColor:'#60cea9',
+    downColor:'#f18d8e',
+    borderVisible:false,
+    wickUpColor:'#60cea9',
+    wickDownColor:'#f18d8e',
   });
   const ro=new ResizeObserver(()=>{
     if(!lwContainer||!lwChart)return;
     lwChart.applyOptions({width:lwContainer.clientWidth,height:lwContainer.clientHeight});
   });
   ro.observe(lwContainer);
+
+  fetchCandles();
+  setInterval(fetchCandles, 60000);
 }
 
-function updateLwPrice(price,source){
-  if(!Number.isFinite(price)||price<=0||!lwSeries)return;
-  const prior=lwLastPrice;lwLastPrice=price;
-  loaded(lwLastEl,formatUSD(price));
-  if(prior&&lwDiffEl){
-    const p=(price-prior)/prior*100;
-    loaded(lwDiffEl,(p>=0?'+':'')+p.toFixed(4)+'% · latest');
-    lwDiffEl.classList.toggle('up',p>=0);
-    lwDiffEl.classList.toggle('down',p<0);
-  }
-  if(source)loaded(lwStatusEl,source+' · '+new Date().toLocaleTimeString());
-}
-
-// seed the chart with Kraken historical 1m candles
-async function seedLwChart(){
+async function fetchCandles(){
+  if(!lwSeries) return;
   try{
-    const j=await fetchJSON('https://api.kraken.com/0/public/OHLC?pair=XBTUSD&interval=1',9000);
-    const rows=Object.values(j.result||{}).find(Array.isArray);
-    if(!rows||!rows.length)throw Error('no kraken rows');
-    const data=rows.slice(-120).map(c=>({time:Math.floor(Number(c[0])),value:Number(c[4])})).filter(d=>Number.isFinite(d.value)&&d.time>0);
-    if(!data.length)throw Error('bad rows');
-    lwSeries.setData(data);
+    const res = await fetch('https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=60', {cache:'no-store'});
+    if(!res.ok) throw Error('HTTP '+res.status);
+    const rows = await res.json();
+    if(!Array.isArray(rows) || !rows.length) throw Error('empty');
+
+    const candles = rows.map(r => ({
+      time: r[0],
+      low: parseFloat(r[1]),
+      high: parseFloat(r[2]),
+      open: parseFloat(r[3]),
+      close: parseFloat(r[4]),
+    })).filter(c => Number.isFinite(c.close) && Number.isFinite(c.time)).sort((a,b)=>a.time-b.time);
+
+    if(!candles.length) throw Error('no valid candles');
+
+    lwSeries.setData(candles);
     lwChart.timeScale().fitContent();
-    updateLwPrice(data.at(-1).value,'Kraken historical');
-  }catch(e){
-    // fallback: Coinbase spot
-    try{
-      const j=await fetchJSON('https://api.coinbase.com/v2/prices/BTC-USD/spot');
-      const p=Number(j.data.amount);
-      if(p>0){lwSeries.setData([{time:Math.floor(Date.now()/1000),value:p}]);updateLwPrice(p,'Coinbase spot');}
-    }catch(e2){loaded(lwStatusEl,'Chart data unavailable');}
-  }
-}
 
-// live Kraken WebSocket v2 (ticker only, area chart updates the last point)
-let lwWs=null,lwReconnect=null;
-function connectLwWs(){
-  if(!window.WebSocket||document.hidden)return;
-  try{
-    if(lwWs&&[0,1].includes(lwWs.readyState))return;
-    lwWs=new WebSocket('wss://ws.kraken.com/v2');
-    lwWs.onopen=()=>{
-      lwWs.send(JSON.stringify({method:'subscribe',params:{channel:'ticker',symbol:['BTC/USD'],snapshot:true}}));
-    };
-    lwWs.onmessage=e=>{
-      let m;try{m=JSON.parse(e.data)}catch{return}
-      if(m.channel==='ticker'&&m.data?.[0]){
-        const p=Number(m.data[0].last);
-        if(p>0){
-          updateLwPrice(p,'Kraken live');
-          if(lwSeries){
-            lwSeries.update({time:Math.floor(Date.now()/1000),value:p});
-          }
-        }
-      }
-    };
-    lwWs.onclose=()=>{lwWs=null;clearTimeout(lwReconnect);lwReconnect=setTimeout(connectLwWs,8000);};
-    lwWs.onerror=()=>lwWs.close();
-  }catch(e){clearTimeout(lwReconnect);lwReconnect=setTimeout(connectLwWs,8000);}
+    const last = candles[candles.length - 1];
+    const price = last.close;
+    if(lwLastEl) loaded(lwLastEl, formatUSD(price));
+
+    if(lwLastPrice && lwDiffEl){
+      const pct = ((price - lwLastPrice) / lwLastPrice) * 100;
+      loaded(lwDiffEl, (pct>=0?'+':'')+pct.toFixed(4)+'%');
+      lwDiffEl.classList.toggle('up', pct>=0);
+      lwDiffEl.classList.toggle('down', pct<0);
+    }
+    lwLastPrice = price;
+
+    if(lwStatusEl) loaded(lwStatusEl, 'Coinbase Exchange · ' + new Date().toLocaleTimeString());
+  }catch(e){
+    if(lwStatusEl) loaded(lwStatusEl, 'Coinbase unavailable · retrying');
+  }
 }
 
 initLwChart();
-seedLwChart();
-connectLwWs();
-document.addEventListener('visibilitychange',()=>{if(!document.hidden){seedLwChart();connectLwWs();}});
 
 // ---- Market snapshot (CoinGecko / Coinbase fallback) ----
 async function marketSnapshot(){
@@ -278,7 +263,7 @@ async function marketSnapshot(){
 }
 marketSnapshot();setInterval(marketSnapshot,60000);
 
-// ---- Account balance: poll every 15s so admin-credited funds appear ----
+// ---- Account balance ----
 async function refreshBalance(){
   try{
     const r=await Elite.apiFetch('/api/me',{});
@@ -295,7 +280,7 @@ async function refreshBalance(){
     if(snap)snap.textContent='Signed in as '+user.fullName+' · $'+Number(user.balanceUSD||0).toFixed(2)+' available';
     const fs=document.getElementById('fundingStatus');
     if(fs){fs.textContent=Number(user.balanceUSD)>0?'Funded':'Awaiting funding';fs.style.color=Number(user.balanceUSD)>0?'#79d7ac':'#dabb7e';}
-  }catch(e){/* silent, keep previous value */}
+  }catch(e){/* silent */}
 }
 refreshBalance();
 setInterval(refreshBalance,15000);
@@ -307,4 +292,4 @@ window.eliteLogout=async()=>{
 };
 </script>
 </body>
- </html>
+</html>
