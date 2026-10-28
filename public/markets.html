@@ -76,7 +76,7 @@
         <div class="section-heading">
           <div>
             <h2>Bitcoin / US Dollar</h2>
-            <div class="chart-label" style="margin-top:8px">BTC/USD · Coinbase Exchange · 1-minute candles</div>
+            <div class="chart-label" style="margin-top:8px">BTC/USDT · Binance Spot · 1-minute candles</div>
           </div>
           <div class="badge"><span class="live-dot"></span> Exchange data</div>
         </div>
@@ -122,7 +122,7 @@ const formatUSD=v=>Number.isFinite(v)?new Intl.NumberFormat('en-US',{style:'curr
 function loaded(el,txt){if(!el)return;el.textContent=txt;el.classList.remove('skeleton','long')}
 async function fetchJSON(url,timeout=10000){const ac=new AbortController(),timer=setTimeout(()=>ac.abort(),timeout);try{const r=await fetch(url,{signal:ac.signal,cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return await r.json()}finally{clearTimeout(timer)}}
 
-// ---- Coinbase Candle Chart ----
+// ---- Binance Candle Chart ----
 const chartContainer = document.getElementById('candleChart');
 const chartLastEl = document.getElementById('chartLast');
 const chartDiffEl = document.getElementById('chartDiff');
@@ -165,17 +165,17 @@ function initChart() {
 async function fetchCandles() {
   if (!candleSeries) return;
   try {
-    // Coinbase Exchange public candles: [time, low, high, open, close, volume]
-    const res = await fetch('https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=60', { cache: 'no-store' });
+    // Binance Spot Klines: [openTime, open, high, low, close, volume, ...]
+    const res = await fetch('https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=300', { cache: 'no-store' });
     if (!res.ok) throw Error('HTTP ' + res.status);
     const rows = await res.json();
     if (!Array.isArray(rows) || !rows.length) throw Error('empty');
 
     const candles = rows.map(r => ({
-      time: r[0],
-      low: parseFloat(r[1]),
+      time: Math.floor(r[0] / 1000), // Convert ms to seconds for Lightweight Charts
+      open: parseFloat(r[1]),
       high: parseFloat(r[2]),
-      open: parseFloat(r[3]),
+      low: parseFloat(r[3]),
       close: parseFloat(r[4]),
     })).filter(c => Number.isFinite(c.close) && Number.isFinite(c.time)).sort((a, b) => a.time - b.time);
 
@@ -196,9 +196,9 @@ async function fetchCandles() {
     }
     lastPrice = price;
 
-    if (feedStatusEl) loaded(feedStatusEl, 'Coinbase Exchange · ' + new Date().toLocaleTimeString());
+    if (feedStatusEl) loaded(feedStatusEl, 'Binance Spot · ' + new Date().toLocaleTimeString());
   } catch (e) {
-    if (feedStatusEl) loaded(feedStatusEl, 'Coinbase unavailable · retrying');
+    if (feedStatusEl) loaded(feedStatusEl, 'Binance unavailable · retrying');
   }
 }
 
@@ -220,17 +220,17 @@ async function marketSnapshot(){
     }
     document.querySelectorAll('[data-market-status]').forEach(n=>loaded(n,'CoinGecko · '+new Date().toLocaleTimeString()));
   }catch(e){
-    const assets=[['BTC','https://api.coinbase.com/v2/prices/BTC-USD/spot'],['ETH','https://api.coinbase.com/v2/prices/ETH-USD/spot'],['SOL','https://api.coinbase.com/v2/prices/SOL-USD/spot']];
+    const assets=[['BTC','https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT'],['ETH','https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT'],['SOL','https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT']];
     for(const [sym,url] of assets){
       try{
         const j=await fetchJSON(url);
-        document.querySelectorAll('[data-price="'+sym+'"]').forEach(n=>loaded(n,formatUSD(Number(j.data.amount))));
+        document.querySelectorAll('[data-price="'+sym+'"]').forEach(n=>loaded(n,formatUSD(Number(j.price))));
         document.querySelectorAll('[data-change="'+sym+'"]').forEach(n=>loaded(n,'—'));
       }catch(e2){
         document.querySelectorAll('[data-price="'+sym+'"],[data-change="'+sym+'"]').forEach(n=>loaded(n,'—'));
       }
     }
-    document.querySelectorAll('[data-market-status]').forEach(n=>loaded(n,'Coinbase spot · 24h unavailable'));
+    document.querySelectorAll('[data-market-status]').forEach(n=>loaded(n,'Binance spot · 24h unavailable'));
   }
 }
 marketSnapshot();setInterval(marketSnapshot,60000);
