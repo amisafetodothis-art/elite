@@ -32,11 +32,9 @@ a{color:inherit;text-decoration:none}img{max-width:100%}
 .section-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:24px;flex-wrap:wrap}
 .section-heading h2{font-size:17px;margin:0;letter-spacing:-.03em}
 .chart-label{color:#98a9b5;font-size:12px}
-.skeleton{display:inline-block;min-width:76px;height:1.05em;border-radius:6px;background:linear-gradient(90deg,#263849 15%,#45586a 45%,#263849 75%);background-size:220% 100%;animation:shimmer 1.45s infinite}
-@keyframes shimmer{to{background-position-x:-220%}}
 .up{color:var(--green)!important}.down{color:var(--red)!important}
 .muted{color:#9aabb7}
-.chart-wrap{position:relative;width:100%;height:320px;margin-top:16px}
+.chart-wrap{position:relative;width:100%;height:360px;margin-top:16px}
 .chart-wrap svg{display:block;width:100%;height:100%}
 .tooltip{position:absolute;background:#0f1d2a;border:1px solid var(--edge);border-radius:8px;padding:8px 10px;font-size:11px;color:#dbe6ee;pointer-events:none;opacity:0;transition:opacity .12s;z-index:5;white-space:nowrap}
 .price-header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
@@ -47,9 +45,8 @@ a{color:inherit;text-decoration:none}img{max-width:100%}
 .table-scroll{overflow-x:auto}
 .asset-name{display:flex;gap:12px;align-items:center}
 .asset-name .coin{width:33px;height:33px}
-.smallnote{font-size:11px;line-height:1.65;color:#8498a7}
 @media(max-width:1080px){.sidebar{width:78px;padding:26px 10px;align-items:center}.sidebar .brand span:last-child,.side-links a span{display:none}.side-links a{justify-content:center}.app{grid-template-columns:78px minmax(0,1fr)}}
-@media(max-width:720px){.app{display:block}.sidebar{display:none}.workspace-top{height:70px;padding:0 14px}.workcontent{padding:20px 14px 60px}.panel{padding:18px}.chart-wrap{height:260px}}
+@media(max-width:720px){.app{display:block}.sidebar{display:none}.workspace-top{height:70px;padding:0 14px}.workcontent{padding:20px 14px 60px}.panel{padding:18px}.chart-wrap{height:280px}}
 </style>
 </head>
 <body>
@@ -67,33 +64,32 @@ a{color:inherit;text-decoration:none}img{max-width:100%}
   <div class="work">
     <header class="workspace-top">
       <h1>Markets</h1>
-      <div class="badge"><span class="live-dot"></span> Chart active</div>
+      <div class="badge"><span class="live-dot"></span> Live chart</div>
     </header>
     <main class="workcontent">
       <div class="eyebrow">Elite / Client workspace</div>
       <h1 class="page-title">Markets, without the noise.</h1>
-      <p class="page-sub">BTC/USD · 1-minute candlesticks · demo feed.</p>
+      <p class="page-sub">BTC/USD · 1-minute candlesticks.</p>
 
       <div class="panel">
         <div class="section-heading">
           <div>
             <h2>Bitcoin / US Dollar</h2>
-            <div class="chart-label" style="margin-top:6px" id="chart-source">Demo feed</div>
+            <div class="chart-label" style="margin-top:6px" id="chart-source">1-minute candles</div>
           </div>
           <div class="badge"><span class="live-dot"></span> 1m candles</div>
         </div>
         <div class="price-header">
-          <strong class="chart-price" id="chartLast"><span class="skeleton"></span></strong>
-          <span class="chart-label" id="chartDiff"><span class="skeleton"></span></span>
+          <strong class="chart-price" id="chartLast">—</strong>
+          <span class="chart-label" id="chartDiff">—</span>
         </div>
         <div class="chart-wrap" id="chartWrap">
-          <svg id="candleSvg" preserveAspectRatio="none" viewBox="0 0 900 320"></svg>
+          <svg id="candleSvg" preserveAspectRatio="none" viewBox="0 0 900 360"></svg>
           <div class="tooltip" id="tooltip"></div>
         </div>
         <div style="display:flex;gap:18px;flex-wrap:wrap;font-size:11px;color:#9badb9;margin-top:12px">
           <span><span style="color:#60cea9">●</span> Price increase</span>
           <span><span style="color:#f18d8e">●</span> Price decrease</span>
-          <span id="feed-status">Demo data · updates every 3s</span>
         </div>
       </div>
 
@@ -122,49 +118,34 @@ a{color:inherit;text-decoration:none}img{max-width:100%}
     ? new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(v)
     : '—';
 
-  const $last   = document.getElementById('chartLast');
-  const $diff   = document.getElementById('chartDiff');
-  const $svg    = document.getElementById('candleSvg');
-  const $wrap   = document.getElementById('chartWrap');
-  const $tip    = document.getElementById('tooltip');
+  const $last = document.getElementById('chartLast');
+  const $diff = document.getElementById('chartDiff');
+  const $svg  = document.getElementById('candleSvg');
+  const $wrap = document.getElementById('chartWrap');
+  const $tip  = document.getElementById('tooltip');
 
   let candles = [];
   let prevClose = null;
   let price = 64000;
 
-  // generate initial candles from a random walk
-  function generateCandles(n) {
+  function generate(n) {
     const out = [];
     const now = Math.floor(Date.now() / 1000);
     for (let i = n - 1; i >= 0; i--) {
       const open = price;
-      const drift = (Math.random() - 0.48) * 120;
+      const drift = (Math.random() - 0.48) * 140;
       const close = Math.max(1, open + drift);
-      const high = Math.max(open, close) + Math.random() * 60;
-      const low  = Math.min(open, close) - Math.random() * 60;
+      const high = Math.max(open, close) + Math.random() * 70;
+      const low  = Math.min(open, close) - Math.random() * 70;
       out.push({ time: now - i * 60, open, high, low, close });
       price = close;
     }
     return out;
   }
 
-  // append one new candle every tick
-  function tick() {
-    const last = candles[candles.length - 1];
-    if (!last) return;
-    const open = last.close;
-    const drift = (Math.random() - 0.48) * 120;
-    const close = Math.max(1, open + drift);
-    const high = Math.max(open, close) + Math.random() * 60;
-    const low  = Math.min(open, close) - Math.random() * 60;
-    candles.push({ time: last.time + 60, open, high, low, close });
-    if (candles.length > 120) candles.shift();
-    draw();
-  }
-
   function draw() {
     if (!candles.length) return;
-    const W = 900, H = 320, padL = 8, padR = 62, padT = 14, padB = 22;
+    const W = 900, H = 360, padL = 10, padR = 68, padT = 16, padB = 26;
     const innerW = W - padL - padR;
     const innerH = H - padT - padB;
 
@@ -173,19 +154,25 @@ a{color:inherit;text-decoration:none}img{max-width:100%}
     const range = Math.max(1, maxP - minP);
     const y = p => padT + (maxP - p) / range * innerH;
     const step = innerW / candles.length;
-    const bodyW = Math.max(2, Math.min(10, step * 0.6));
+    const bodyW = Math.max(2, Math.min(12, step * 0.62));
 
     let m = '';
 
-    // grid + price labels on the right
     for (let i = 0; i <= 4; i++) {
       const p = maxP - (range / 4) * i;
       const yy = y(p);
-      m += `<line x1="${padL}" y1="${yy}" x2="${W - padR}" y2="${yy}" stroke="rgba(255,255,255,.06)"/>`;
-      m += `<text x="${W - padR + 6}" y="${yy + 4}" fill="#7f95a4" font-size="11" font-family="system-ui">${fmt(p)}</text>`;
+      m += `<line x1="${padL}" y1="${yy}" x2="${W - padR}" y2="${yy}" stroke="rgba(255,255,255,.07)"/>`;
+      m += `<text x="${W - padR + 8}" y="${yy + 4}" fill="#7f95a4" font-size="11" font-family="system-ui">${fmt(p)}</text>`;
     }
 
-    // candles
+    const tIdx = [0, Math.floor(candles.length/2), candles.length - 1];
+    tIdx.forEach(i => {
+      const c = candles[i];
+      const x = padL + (i + 0.5) * step;
+      const label = new Date(c.time * 1000).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      m += `<text x="${x}" y="${H - 6}" fill="#7f95a4" font-size="10" font-family="system-ui" text-anchor="middle">${label}</text>`;
+    });
+
     candles.forEach((c, i) => {
       const x = padL + (i + 0.5) * step;
       const green = c.close >= c.open;
@@ -197,22 +184,20 @@ a{color:inherit;text-decoration:none}img{max-width:100%}
       m += `<rect x="${x - bodyW/2}" y="${yBody}" width="${bodyW}" height="${hBody}" fill="${col}" rx="1"/>`;
     });
 
+    m += `<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}" stroke="rgba(255,255,255,.08)"/>`;
+
     $svg.innerHTML = m;
 
-    // price header
     const last = candles[candles.length - 1];
     $last.textContent = fmt(last.close);
-    $last.classList.remove('skeleton');
     if (prevClose !== null) {
       const pct = ((last.close - prevClose) / prevClose) * 100;
       $diff.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(4) + '%';
       $diff.classList.toggle('up', pct >= 0);
       $diff.classList.toggle('down', pct < 0);
-      $diff.classList.remove('skeleton');
     }
     prevClose = last.close;
 
-    // fake spot prices for the table
     document.querySelectorAll('[data-price="BTC"]').forEach(n => n.textContent = fmt(last.close));
     document.querySelectorAll('[data-price="ETH"]').forEach(n => n.textContent = fmt(last.close * 0.045));
     document.querySelectorAll('[data-price="SOL"]').forEach(n => n.textContent = fmt(last.close * 0.0023));
@@ -221,7 +206,6 @@ a{color:inherit;text-decoration:none}img{max-width:100%}
     document.querySelectorAll('[data-change="SOL"]').forEach(n => { n.textContent = '+2.11%'; n.classList.add('up'); });
   }
 
-  // hover tooltip
   $wrap.addEventListener('mousemove', (e) => {
     if (!candles.length) return;
     const rect = $wrap.getBoundingClientRect();
@@ -237,10 +221,8 @@ a{color:inherit;text-decoration:none}img{max-width:100%}
   });
   $wrap.addEventListener('mouseleave', () => { $tip.style.opacity = 0; });
 
-  // boot
-  candles = generateCandles(120);
+  candles = generate(120);
   draw();
-  setInterval(tick, 3000);
 })();
 </script>
 </body>
